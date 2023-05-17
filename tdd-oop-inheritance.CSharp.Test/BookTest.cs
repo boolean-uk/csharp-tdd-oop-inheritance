@@ -1,41 +1,41 @@
-﻿using tdd_oop_inheritance.CSharp.Main;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using LibraryItems;
 
-namespace tdd_oop_inheritance.CSharp.Test
+namespace tdd.oop.inheritance.CSharp.Test
 {
     public class BookTest
     {
         [Test]
-        public void shouldCheckOutIfAvailable()
+        public void ShouldCheckOutIfAvailable()
         {
-            Book book = new Book("JUnit Rocks");
-            Assert.AreEqual("item has been checked out", book.checkOut());
+            Book book = new("JUnit Rocks");
+            Assert.AreEqual("item has been checked out", book.CheckOut());
         }
 
         [Test]
-        public void shouldDeclineIfNotAvailableToCheckout()
+        public void ShouldDeclineIfNotAvailableToCheckout()
         {
-            Book book = new Book("JUnit Rocks");
-            book.checkOut();
+            Book book = new("JUnit Rocks");
+            book.CheckOut();
 
-            Assert.AreEqual("item is currently on loan", book.checkOut());
+            Assert.AreEqual("item is currently on loan", book.CheckOut());
         }
 
         [Test]
-        public void shouldCheckInIfOnLoan()
+        public void ShouldCheckInIfOnLoan()
         {
-            Book book = new Book("JUnit Rocks");
-            book.checkOut();
+            Book book = new("JUnit Rocks");
+            book.CheckOut();
 
-            Assert.AreEqual("item has been checked in", book.checkIn());
+            Assert.AreEqual("item has been checked in", book.CheckIn());
         }
 
         [Test]
-        public void shouldDeclineCheckInIfNotOnLoan()
+        public void ShouldDeclineCheckInIfNotOnLoan()
         {
-            Book book = new Book("JUnit Rocks");
+            Book book = new("JUnit Rocks");
 
-            Assert.AreEqual("item is not currently on loan", book.checkIn());
+            Assert.AreEqual("item is not currently on loan", book.CheckIn());
         }
     }
 }

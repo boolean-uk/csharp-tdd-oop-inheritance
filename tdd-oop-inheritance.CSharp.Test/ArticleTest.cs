@@ -1,41 +1,41 @@
-﻿using tdd_oop_inheritance.CSharp.Main;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using LibraryItems;
 
-namespace tdd_oop_inheritance.CSharp.Test
+namespace tdd.oop.inheritance.CSharp.Test
 {
     class ArticleTest
     {
         [Test]
-        public void shouldCheckOutIfAvailable()
-            {
-                Article article = new Article("JUnit Rocks");
-                Assert.AreEqual("item has been checked out", article.checkOut());
-            }
+        public void ShouldCheckOutIfAvailable()
+        {
+            Article article = new("JUnit Rocks");
+            Assert.AreEqual("item has been checked out", article.CheckOut());
+        }
 
         [Test]
-        public void shouldDeclineIfNotAvailableToCheckout()
-            {
-                Article article = new Article("JUnit Rocks");
-                article.checkOut();
+        public void ShouldDeclineIfNotAvailableToCheckout()
+        {
+            Article article = new("JUnit Rocks");
+            article.CheckOut();
 
-                Assert.AreEqual("item is currently on loan", article.checkOut());
-            }
-
-        [Test]
-        public void shouldCheckInIfOnLoan()
-            {
-                Article article = new Article("JUnit Rocks");
-                article.checkOut();
-
-                Assert.AreEqual("item has been checked in", article.checkIn());
-            }
+            Assert.AreEqual("item is currently on loan", article.CheckOut());
+        }
 
         [Test]
-        public void shouldDeclineCheckInIfNotOnLoan()
-            {
-                Article article = new Article("JUnit Rocks");
+        public void ShouldCheckInIfOnLoan()
+        {
+            Article article = new("JUnit Rocks");
+            article.CheckOut();
 
-                Assert.AreEqual("item is not currently on loan", article.checkIn());
-            }
+            Assert.AreEqual("item has been checked in", article.CheckIn());
+        }
+
+        [Test]
+        public void ShouldDeclineCheckInIfNotOnLoan()
+        {
+            Article article = new("JUnit Rocks");
+
+            Assert.AreEqual("item is not currently on loan", article.CheckIn());
+        }
     }
 }
