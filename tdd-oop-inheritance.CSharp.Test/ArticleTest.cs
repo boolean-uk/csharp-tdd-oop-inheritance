@@ -1,5 +1,5 @@
-﻿using tdd_oop_inheritance.CSharp.Main;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using Items;
 
 namespace tdd_oop_inheritance.CSharp.Test
 {
