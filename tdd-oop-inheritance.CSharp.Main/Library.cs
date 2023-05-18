@@ -19,23 +19,7 @@ namespace Administration
         {
             _items.Add(item);
         }
-        //public void addToStock(Article item)
-        //{
-        //    throw new NotImplementedException();
-        //    articles.Add(item);
-        //}
-
-        //public void addToStock(Book item)
-        //{
-        //    throw new NotImplementedException();
-        //    books.Add(item);
-        //}
-
-        //public void addToStock(Newspaper item)
-        //{
-        //    throw new NotImplementedException();
-        //    newspapers.Add(item);
-        //}
+        
 
         // The following methods may contain code that you are unfamiliar with. The strange syntax of article -> something
         // is called a lambda expression (https://www.w3schools.com/java/java_lambda.asp)
