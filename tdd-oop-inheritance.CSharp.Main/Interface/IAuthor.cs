@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Interface.oop.inheritance.CSharp.Main
 {
-    internal interface Interface1
+    public interface IAuthor
 {
+        string Name { get; set; }
+        string ContactInformation { get; set; }
+        string website { get; set; }
 }
 }

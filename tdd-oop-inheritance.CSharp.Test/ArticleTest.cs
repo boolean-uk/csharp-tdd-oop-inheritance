@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
-using LibraryItems;
+using tdd.oop.inheritance.CSharp.Main.LibraryItems;
+using Interface.oop.inheritance.CSharp.Main;
+using tdd.oop.inheritance.CSharp.Main;
 
 namespace tdd.oop.inheritance.CSharp.Test
 {
@@ -8,14 +10,16 @@ namespace tdd.oop.inheritance.CSharp.Test
         [Test]
         public void ShouldCheckOutIfAvailable()
         {
-            Article article = new("JUnit Rocks");
+            IAuthor author = new Author();
+            Article article = new Article("All About Muggles", author);
             Assert.AreEqual("item has been checked out", article.CheckOut());
         }
 
         [Test]
         public void ShouldDeclineIfNotAvailableToCheckout()
         {
-            Article article = new("JUnit Rocks");
+            IAuthor author = new Author();
+            Article article = new Article("All About Muggles", author);
             article.CheckOut();
 
             Assert.AreEqual("item is currently on loan", article.CheckOut());
@@ -24,7 +28,8 @@ namespace tdd.oop.inheritance.CSharp.Test
         [Test]
         public void ShouldCheckInIfOnLoan()
         {
-            Article article = new("JUnit Rocks");
+            IAuthor author = new Author();
+            Article article = new Article("All About Muggles", author);
             article.CheckOut();
 
             Assert.AreEqual("item has been checked in", article.CheckIn());
@@ -33,9 +38,24 @@ namespace tdd.oop.inheritance.CSharp.Test
         [Test]
         public void ShouldDeclineCheckInIfNotOnLoan()
         {
-            Article article = new("JUnit Rocks");
+            IAuthor author = new Author();
+            Article article = new Article("All About Muggles", author);
 
             Assert.AreEqual("item is not currently on loan", article.CheckIn());
+        }
+        [Test]
+        public void ShouldHaveAuthor()
+        {
+            IAuthor author = new Author();
+
+            author.Name = "J.K.R.";
+            author.website = "wizardingworld.com";
+            author.ContactInformation = "call assistant";
+
+            Article article = new Article("All About Muggles", author);
+
+
+            Assert.IsTrue(article.Author.website == "wizardingworld.com");
         }
     }
 }

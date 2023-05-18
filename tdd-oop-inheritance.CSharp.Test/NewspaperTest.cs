@@ -1,5 +1,8 @@
 ﻿using NUnit.Framework;
-using LibraryItems;
+
+using tdd.oop.inheritance.CSharp.Main.LibraryItems;
+using tdd.oop.inheritance.CSharp.Main;
+
 
 namespace tdd.oop.inheritance.CSharp.Test
 {

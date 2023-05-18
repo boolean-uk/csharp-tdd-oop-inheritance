@@ -1,5 +1,7 @@
-﻿using NUnit.Framework;
-using LibraryItems;
+﻿using Interface.oop.inheritance.CSharp.Main;
+using NUnit.Framework;
+using tdd.oop.inheritance.CSharp.Main;
+using tdd.oop.inheritance.CSharp.Main.LibraryItems;
 
 namespace tdd.oop.inheritance.CSharp.Test
 {
@@ -8,14 +10,18 @@ namespace tdd.oop.inheritance.CSharp.Test
         [Test]
         public void ShouldCheckOutIfAvailable()
         {
-            Book book = new("JUnit Rocks");
+            IAuthor author = new Author();
+            Book book = new("All About Muggles", author);
+
             Assert.AreEqual("item has been checked out", book.CheckOut());
         }
 
         [Test]
         public void ShouldDeclineIfNotAvailableToCheckout()
         {
-            Book book = new("JUnit Rocks");
+            IAuthor author = new Author();
+            Book book = new("All About Muggles", author); 
+
             book.CheckOut();
 
             Assert.AreEqual("item is currently on loan", book.CheckOut());
@@ -24,7 +30,9 @@ namespace tdd.oop.inheritance.CSharp.Test
         [Test]
         public void ShouldCheckInIfOnLoan()
         {
-            Book book = new("JUnit Rocks");
+            IAuthor author = new Author();
+            Book book = new("All About Muggles", author);
+
             book.CheckOut();
 
             Assert.AreEqual("item has been checked in", book.CheckIn());
@@ -33,9 +41,25 @@ namespace tdd.oop.inheritance.CSharp.Test
         [Test]
         public void ShouldDeclineCheckInIfNotOnLoan()
         {
-            Book book = new("JUnit Rocks");
+            IAuthor author = new Author();
+            Book book = new("All About Muggles", author);
 
             Assert.AreEqual("item is not currently on loan", book.CheckIn());
+        }
+
+        [Test]
+        public void ShouldHaveAuthor()
+        {
+            IAuthor author = new Author();
+            Book book = new("All About Muggles", author);
+
+            author.Name = "J.K.R.";
+            author.website = "wizardingworld.com";
+            author.ContactInformation = "call assistant";
+
+
+
+            Assert.IsTrue(book.Author.Name == "J.K.R.");
         }
     }
 }

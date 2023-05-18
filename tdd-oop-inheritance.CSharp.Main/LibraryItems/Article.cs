@@ -1,16 +1,22 @@
-﻿using System;
+﻿using Interface.oop.inheritance.CSharp.Main;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using tdd.oop.inheritance.CSharp.Main.Interface;
 
-namespace LibraryItems
+namespace tdd.oop.inheritance.CSharp.Main.LibraryItems
+
 {
-    public class Article : LibraryItem
+    public class Article : LibraryItem, IAuthorable
     {
-        public Article(string title) : base(title)
+        IAuthor _author;
+        public Article(string title, IAuthor author) : base(title)
         {
+            _author = author;
         }
+
 
         public override string CheckIn()
         {
@@ -35,5 +41,6 @@ namespace LibraryItems
 
             return "item has been checked out";
         }
+        public IAuthor Author { get { return _author; } set { _author = value; } }
     }
 }

@@ -1,4 +1,5 @@
-﻿using LibraryItems;
+﻿
+using Interface.oop.inheritance.CSharp.Main;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using tdd.oop.inheritance.CSharp.Main;
+using tdd.oop.inheritance.CSharp.Main.LibraryItems;
 
 namespace tdd.oop.inheritance.CSharp.Test
 {
@@ -19,8 +21,9 @@ namespace tdd.oop.inheritance.CSharp.Test
         {
             
             Library library = new Library();
+            IAuthor author = new Author();
 
-            var book = new Book("Harry Potter");
+            var book = new Book("Harry Potter", author);
             library.AddToStock(book);
 
             Assert.AreEqual(1, library.Items.Count);
@@ -43,7 +46,8 @@ namespace tdd.oop.inheritance.CSharp.Test
         public void BookCheckIn()
         {
             Library library = new();
-            Book book = new("Of Human Bondage");
+            IAuthor author = new Author();
+            Book book = new("Of Human Bondage", author);
 
             library.AddToStock(book);
 

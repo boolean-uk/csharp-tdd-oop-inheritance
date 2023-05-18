@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryItems
+namespace tdd.oop.inheritance.CSharp.Main
 {
     public abstract class LibraryItem
     {
