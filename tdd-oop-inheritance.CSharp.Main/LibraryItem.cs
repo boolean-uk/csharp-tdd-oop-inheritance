@@ -4,37 +4,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace tdd_oop_inheritance.CSharp.Main
+namespace Items
 {
-    public class Article {
+    public abstract class LibraryItem
+    {
         public string title;
 
         bool onLoan = false;
 
-        public Article(string title) {
+        public LibraryItem(string title)
+        {
             this.title = title;
         }
-        
-        public bool isOnLoan()  {
+
+        public bool isOnLoan()
+        {
             return onLoan;
         }
 
-        public string checkIn() {
-            if (!this.isOnLoan()) {
+        public virtual string checkIn()
+        {
+            if (!isOnLoan())
+            {
                 return "item is not currently on loan";
             }
 
-            this.onLoan = false;
+            onLoan = false;
 
             return "item has been checked in";
         }
 
-        public string checkOut() {
-            if (this.isOnLoan()) {
+        public virtual string checkOut()
+        {
+            if (isOnLoan())
+            {
                 return "item is currently on loan";
             }
 
-            this.onLoan = true;
+            onLoan = true;
 
             return "item has been checked out";
         }
