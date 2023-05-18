@@ -8,7 +8,7 @@ using tdd_oop_inheritance.CSharp.Main.Author;
 
 namespace Items
 {
-    public class Article : LibaryItem, IAuthorable
+    public class Article : LibraryItem, IAuthorable
     {
         IAuthor _author;
 

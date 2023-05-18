@@ -7,7 +7,7 @@ using tdd_oop_inheritance.CSharp.Main.Author;
 
 namespace Items
 {
-    public class Book : LibaryItem, IAuthorable
+    public class Book : LibraryItem, IAuthorable
     {
         IAuthor _author;
 

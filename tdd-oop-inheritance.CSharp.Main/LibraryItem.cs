@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Items
 {
-    public abstract class LibaryItem
+    public abstract class LibraryItem
     {
         public string title;
 
         bool onLoan = false;
 
-        public LibaryItem(string title)
+        public LibraryItem(string title)
         {
             this.title = title;
         }

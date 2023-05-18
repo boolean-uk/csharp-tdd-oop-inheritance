@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Items
 {
-    public class Newspaper : LibaryItem
+    public class Newspaper : LibraryItem
     {
         public Newspaper(string title) : base(title)
         {
