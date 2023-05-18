@@ -11,10 +11,6 @@ namespace Items
     public class Article : LibraryItem, IAuthorable
     {
         IAuthor _author;
-
-        public Article(string title) : base(title)
-        {
-        }
         public Article(string title, IAuthor autohor) : base(title)
         {
             _author = autohor;
