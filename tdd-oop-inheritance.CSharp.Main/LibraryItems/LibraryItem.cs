@@ -15,7 +15,7 @@ namespace LibraryItems
         {
             this.title = title;
         }
-        public bool IsOnLoan()
+        public virtual bool IsOnLoan()
         {
             return onLoan;
         }
