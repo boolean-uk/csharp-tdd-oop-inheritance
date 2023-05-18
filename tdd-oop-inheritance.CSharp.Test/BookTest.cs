@@ -10,8 +10,8 @@ namespace tdd_oop_inheritance.CSharp.Test
         {
             Book book = new Book("JUnit Rocks");
             Library library = new Library();
-            library.addToStock(book);
-            Assert.AreEqual("item has been checked out", library.checkOutBook("JUnit Rocks"));
+            book.addToStock(book);
+            Assert.AreEqual("item has been checked out", book.checkOutBook("JUnit Rocks"));
         }
 
         [Test]
@@ -19,10 +19,10 @@ namespace tdd_oop_inheritance.CSharp.Test
         {
             Book book = new Book("JUnit Rocks");
             Library library = new Library();
-            library.addToStock(book);
+            book.addToStock(book);
             book.checkOut();
 
-            Assert.AreEqual("item is currently on loan", library.checkOutBook("JUnit Rocks"));
+            Assert.AreEqual("item is currently on loan", book.checkOutBook("JUnit Rocks"));
         }
 
         [Test]
@@ -30,10 +30,10 @@ namespace tdd_oop_inheritance.CSharp.Test
         {
             Book book = new Book("JUnit Rocks");
             Library library = new Library();
-            library.addToStock(book);
+            book.addToStock(book);
             book.checkOut();
 
-            Assert.AreEqual("item has been checked in", library.checkInBook("JUnit Rocks"));
+            Assert.AreEqual("item has been checked in", book.checkInBook("JUnit Rocks"));
         }
 
         [Test]
@@ -41,9 +41,9 @@ namespace tdd_oop_inheritance.CSharp.Test
         {
             Book book = new Book("JUnit Rocks");
             Library library = new Library();
-            library.addToStock(book);
+            book.addToStock(book);
 
-            Assert.AreEqual("item is not currently on loan", library.checkInBook("JUnit Rocks"));
+            Assert.AreEqual("item is not currently on loan", book.checkInBook("JUnit Rocks"));
         }
     }
 }

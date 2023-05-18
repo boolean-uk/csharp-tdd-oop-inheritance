@@ -10,8 +10,8 @@ namespace tdd_oop_inheritance.CSharp.Test
             {
                 Article article = new Article("JUnit Rocks");
                 Library library = new Library();
-                library.addToStock(article);
-                string result = library.checkOutArticle("JUnit Rocks");
+                article.addToStock(article);
+                string result = article.checkOutArticle("JUnit Rocks");
                 string expected = "item has been checked out";
 
 
@@ -23,10 +23,10 @@ namespace tdd_oop_inheritance.CSharp.Test
             {
                 Article article = new Article("JUnit Rocks");
                 Library library = new Library();    
-                library.addToStock(article);
+                article.addToStock(article);
                 article.checkOut();
 
-                Assert.AreEqual("item is currently on loan", library.checkOutArticle("JUnit Rocks"));
+                Assert.AreEqual("item is currently on loan", article.checkOutArticle("JUnit Rocks"));
             }
 
         [Test]
@@ -34,10 +34,10 @@ namespace tdd_oop_inheritance.CSharp.Test
             {
                 Article article = new Article("JUnit Rocks");
                 Library library = new Library();
-                library.addToStock(article);
+                article.addToStock(article);
                 article.checkOut();
 
-                Assert.AreEqual("item has been checked in", library.checkInArticle("JUnit Rocks"));
+                Assert.AreEqual("item has been checked in", article.checkInArticle("JUnit Rocks"));
             }
 
         [Test]
@@ -45,9 +45,9 @@ namespace tdd_oop_inheritance.CSharp.Test
             {
                 Article article = new Article("JUnit Rocks");
                 Library library = new Library();
-                library.addToStock(article);
+                article.addToStock(article);
 
-            Assert.AreEqual("item is not currently on loan", library.checkInArticle("JUnit Rocks"));
+            Assert.AreEqual("item is not currently on loan", article.checkInArticle("JUnit Rocks"));
             }
     }
 }

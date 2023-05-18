@@ -10,8 +10,8 @@ namespace tdd_oop_inheritance.CSharp.Test
         {
             Newspaper newspaper = new Newspaper("The Daily Java");
             Library library = new Library();
-            library.addToStock(newspaper);
-            Assert.AreEqual("newspapers are not available for loan", library.checkInNewspaper("The Daily Java"));
+            newspaper.addToStock(newspaper);
+            Assert.AreEqual("newspapers are not available for loan", newspaper.checkInNewspaper("The Daily Java"));
         }
 
         [Test]
@@ -19,8 +19,8 @@ namespace tdd_oop_inheritance.CSharp.Test
         {
             Newspaper newspaper = new Newspaper("The Daily Java");
             Library library = new Library();
-            library.addToStock(newspaper);
-            Assert.AreEqual("item has been checked out", library.checkOutNewspaper("The Daily Java"));
+            newspaper.addToStock(newspaper);
+            Assert.AreEqual("item has been checked out", newspaper.checkOutNewspaper("The Daily Java"));
         }
     }
 }
