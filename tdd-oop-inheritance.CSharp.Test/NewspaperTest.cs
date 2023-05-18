@@ -9,14 +9,18 @@ namespace tdd_oop_inheritance.CSharp.Test
         public void shouldBeUnavailableForCheckIn()
         {
             Newspaper newspaper = new Newspaper("The Daily Java");
-            Assert.AreEqual("newspapers are not available for loan", newspaper.checkIn());
+            Library library = new Library();
+            library.addToStock(newspaper);
+            Assert.AreEqual("newspapers are not available for loan", library.checkInNewspaper("The Daily Java"));
         }
 
         [Test]
         public void shouldBeUnavailableForCheckOut()
         {
             Newspaper newspaper = new Newspaper("The Daily Java");
-            Assert.AreEqual("newspapers are not available for loan", newspaper.checkOut());
+            Library library = new Library();
+            library.addToStock(newspaper);
+            Assert.AreEqual("item has been checked out", library.checkOutNewspaper("The Daily Java"));
         }
     }
 }
