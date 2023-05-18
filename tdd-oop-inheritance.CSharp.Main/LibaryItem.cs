@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace tdd_oop_inheritance.CSharp.Main
+namespace Items
 {
-    public class LibaryItem
-{
+    public abstract class LibaryItem
+    {
         public string title;
 
         bool onLoan = false;
