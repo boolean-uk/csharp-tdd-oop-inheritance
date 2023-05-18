@@ -6,27 +6,26 @@ using System.Threading.Tasks;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public class Newspaper : Library
+    public class LibraryActions
     {
-        public string title;
-
-       
-
-        public Newspaper(string title) {
-            this.title = title;
+        public bool onLoan = false;
+        public bool isOnLoan()
+        {
+            return onLoan;
         }
 
         public string checkIn()
         {
             if (!this.isOnLoan())
             {
-                return "newspapers are not available for loan";
+                return "item is not currently on loan";
             }
 
             this.onLoan = false;
 
             return "item has been checked in";
         }
+
         public string checkOut()
         {
             if (this.isOnLoan())
@@ -38,6 +37,5 @@ namespace tdd_oop_inheritance.CSharp.Main
 
             return "item has been checked out";
         }
-
     }
 }
