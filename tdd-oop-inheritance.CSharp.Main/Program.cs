@@ -3,15 +3,11 @@ using tdd_oop_inheritance.CSharp.Main;
 
 Console.WriteLine("Hello, World!");
 
-Library library = new Library();
-Article article = new Article("test");
-Book book = new Book("lala");
-Book book2 = new Book("test");
-library.addToStock(book);
-library.addToStock(book2);
+Author author = new Author("thanasis", "uk", "69999999");
+Article article = new Article("JUnit Rocks", author);
+article.addToStock(article);
 
-Console.WriteLine(book.checkInBook("lala"));
-foreach(var item in library.Books)
+foreach (var item in article.Articles)
 {
-    Console.WriteLine(item.title);
+    Console.WriteLine(item._author.Name);
 }

@@ -8,7 +8,8 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldCheckOutIfAvailable()
         {
-            Book book = new Book("JUnit Rocks");
+            Author author = new Author("Nigel", "uk", "discord");
+            Book book = new Book("JUnit Rocks", author);
             Library library = new Library();
             book.addToStock(book);
             Assert.AreEqual("item has been checked out", book.checkOutBook("JUnit Rocks"));
@@ -17,8 +18,8 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldDeclineIfNotAvailableToCheckout()
         {
-            Book book = new Book("JUnit Rocks");
-            Library library = new Library();
+            Author author = new Author("Nigel", "uk", "discord");
+            Book book = new Book("JUnit Rocks", author); Library library = new Library();
             book.addToStock(book);
             book.checkOut();
 
@@ -28,8 +29,8 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldCheckInIfOnLoan()
         {
-            Book book = new Book("JUnit Rocks");
-            Library library = new Library();
+            Author author = new Author("Nigel", "uk", "discord");
+            Book book = new Book("JUnit Rocks", author); Library library = new Library();
             book.addToStock(book);
             book.checkOut();
 
@@ -39,8 +40,8 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldDeclineCheckInIfNotOnLoan()
         {
-            Book book = new Book("JUnit Rocks");
-            Library library = new Library();
+            Author author = new Author("Nigel", "uk", "discord");
+            Book book = new Book("JUnit Rocks", author); Library library = new Library();
             book.addToStock(book);
 
             Assert.AreEqual("item is not currently on loan", book.checkInBook("JUnit Rocks"));
