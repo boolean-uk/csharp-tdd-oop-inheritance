@@ -26,7 +26,7 @@ namespace Administration
         // is called a lambda expression (https://www.w3schools.com/java/java_lambda.asp) 
         public string checkInItem(string title)
         {
-            var item = _items.Where(i => i.title == title && i.isOnLoan() == false).FirstOrDefault();
+            var item = _items.Where(i => i.title == title ).FirstOrDefault();
             if (item != null) 
             {
                 return item.checkIn();
@@ -36,52 +36,19 @@ namespace Administration
                 return "item is not part of the library's collection";
             }
         }
-          
+          public string checkOutItem (string title)
+        {
+            var item = _items.Where(i => i.title == title && i.isOnLoan() == false).FirstOrDefault();
+            if (item != null)
+            {
+                return item.checkOut();
+            }
+            else
+            {
+                return "item is not part of the library's collection";
+            }
+        }
          
-        /*
-         
-         public string checkOutArticle(string title)
-         {
-             throw new NotImplementedException();
-
-             List<Article> filtered = (List<Article>)articles.Where(article => article.title.Equals(title));
-
-             if (filtered.Count() < 1)
-             {
-                 return "item is not part of the library's collection";
-             }
-
-             return filtered[0].checkOut();
-         }   
-
-         public string checkOutBook(string title)
-         {
-             throw new NotImplementedException();
-
-             List<Book> filtered = (List<Book>)books.Where(book => book.Equals(title));
-
-             if (filtered.Count() < 1)
-             {
-                 return "item is not part of the library's collection";
-             }
-
-             return filtered[0].checkOut();
-         }
-
-         public string checkOutNewspaper(string title)
-         {
-             throw new NotImplementedException();
-
-             List<Newspaper> filtered = (List<Newspaper>)newspapers.Where(newspaper => newspaper.title.Equals(title));
-
-             if (filtered.Count() < 1)
-             {
-                 return "item is not part of the library's collection";
-             }
-
-             return filtered[0].checkOut();
-         }
-         */
         public List<LibraryItem> Items { get => _items; set => _items=value; }
     }
 }
