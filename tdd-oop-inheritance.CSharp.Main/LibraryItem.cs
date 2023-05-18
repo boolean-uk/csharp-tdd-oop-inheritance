@@ -22,7 +22,7 @@ namespace Items
             return onLoan;
         }
 
-        public string checkIn()
+        public virtual string checkIn()
         {
             if (!isOnLoan())
             {
@@ -34,7 +34,7 @@ namespace Items
             return "item has been checked in";
         }
 
-        public string checkOut()
+        public virtual string checkOut()
         {
             if (isOnLoan())
             {

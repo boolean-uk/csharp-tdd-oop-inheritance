@@ -12,12 +12,12 @@ namespace Items
         {
         }
 
-        public string checkIn()
+        public override string checkIn()
         {
             return "newspapers are not available for loan";
         }
 
-        public string checkOut()
+        public override string checkOut()
         {
             return "newspapers are not available for loan";
         }
