@@ -39,7 +39,7 @@ namespace tdd_oop_inheritance.CSharp.Main
         public string checkInReadingMaterial(string title)
         {
 
-            List<ReadingMaterial> filtered = (List<ReadingMaterial>)this._products.Where(article => article.Equals(title));
+            List<ReadingMaterial> filtered = (List<ReadingMaterial>)this._products.Where(article => article.Title.Equals(title));
 
             if (filtered.Count() < 1)
             {
@@ -52,7 +52,7 @@ namespace tdd_oop_inheritance.CSharp.Main
         public string checkInArticle(string title)
         {
 
-            List<Article> filtered = (List<Article>)this._products.Where(article => article.Equals(title));
+            List<Article> filtered = (List<Article>)this._products.Where(article => article.Title.Equals(title));
 
             if (filtered.Count() < 1)
             {
@@ -64,7 +64,7 @@ namespace tdd_oop_inheritance.CSharp.Main
 
         public string checkOutArticle(string title)
         {
-            List<Article> filtered = (List<Article>)this._products.Where(article => article.Equals(title));
+            List<Article> filtered = (List<Article>)this._products.Where(article => article.Title.Equals(title));
 
             if (filtered.Count() < 1)
             {
@@ -76,7 +76,7 @@ namespace tdd_oop_inheritance.CSharp.Main
 
         public string checkInBook(string title)
         {
-            List<Book> filtered = (List<Book>)this._products.Where(book => book.Equals(title));
+            List<Book> filtered = (List<Book>)this._products.Where(book => book.Title.Equals(title));
 
             if (filtered.Count() < 1)
             {
@@ -88,6 +88,13 @@ namespace tdd_oop_inheritance.CSharp.Main
 
         public string checkOutBook(string title)
         {
+            var item = _products.Where(i => i.Title == title).FirstOrDefault();
+            if (item != null)
+            {
+                return item.checkOut();
+            }
+            return "item is not part of the library's collection";
+
             List<Book> filtered = (List<Book>)this._products.Where(book => book.Title.Equals(title));
 
             if (filtered.Count() < 1)
@@ -100,7 +107,7 @@ namespace tdd_oop_inheritance.CSharp.Main
 
         public string checkInNewspaper(string title)
         {
-            List<Newspaper> filtered = (List<Newspaper>)this._products.Where(newspaper => newspaper.Equals(title));
+            List<Newspaper> filtered = (List<Newspaper>)this._products.Where(newspaper => newspaper.Title.Equals(title));
 
             if (filtered.Count() < 1)
             {
@@ -112,7 +119,7 @@ namespace tdd_oop_inheritance.CSharp.Main
 
         public string checkOutNewspaper(string title)
         {
-            List<Newspaper> filtered = (List<Newspaper>)this._products.Where(newspaper => newspaper.Equals(title));
+            List<Newspaper> filtered = (List<Newspaper>)this._products.Where(newspaper => newspaper.Title.Equals(title));
 
             if (filtered.Count() < 1)
             {

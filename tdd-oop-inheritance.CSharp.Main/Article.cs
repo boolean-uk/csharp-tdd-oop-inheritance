@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 namespace tdd_oop_inheritance.CSharp.Main
 {
     public class Article : ReadingMaterial{
+        private Author _author;
+
+
         //public string title;
 
         bool onLoan = false;
@@ -15,7 +18,21 @@ namespace tdd_oop_inheritance.CSharp.Main
         {
             //this.title = title;
         }
-        
+
+        public Article(Author author, string title, bool onLoan) : base (title, onLoan) 
+        {
+            _author = author;
+        }
+        //public Article(Author author)
+        //{
+        //    _author = author;
+        //}
+
+        //public string displayAuthor(string author)
+        //{
+        //    foreach(Author x in this.displayAuthor)
+        //}
+
         //public new bool isOnLoan()  {
         //    return onLoan;
         //}

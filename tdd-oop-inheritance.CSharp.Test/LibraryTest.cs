@@ -23,6 +23,7 @@ namespace tdd_oop_inheritance.CSharp.Test
             //library.checkInBook.Add(new Book("Harry Potter", false));
 
             string result = library.checkOutBook("Harry Potter");
+            //Assert.AreEqual("newspapers are not available for loan", newspaper.checkOut());
             Assert.AreEqual("item has been checked out", result);
 
         }
