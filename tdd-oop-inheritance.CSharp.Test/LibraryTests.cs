@@ -17,7 +17,8 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void AddToStockAreItemsCorrectlyAdded()
         {
-            var book = new Book("Harry Potter");
+            var author = new Author("J.K. Rowling", "contact@jkrowling.com", "https://www.jkrowling.com/");
+            var book = new Book("Harry Potter", author);
             library.addToStock(book);
             Assert.IsTrue(library.Items.Contains(book));
         }
