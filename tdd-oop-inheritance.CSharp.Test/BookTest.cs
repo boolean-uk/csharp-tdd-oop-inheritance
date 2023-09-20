@@ -6,6 +6,14 @@ namespace tdd_oop_inheritance.CSharp.Test
     public class BookTest
     {
         [Test]
+        public void shouldGetAuthorName()
+        {
+            Book book = new Book("Programming C# 8.0", new Author("Ian Griffiths", "ian.griffiths@maths.ox.ac.uk", "Professor of Industrial Mathematics based in the Mathematical Institute at the University of Oxford", "https://people.maths.ox.ac.uk/griffit4"));
+
+            Assert.AreEqual("Ian Griffiths", book.AuthorName);
+        }
+
+        [Test]
         public void shouldCheckOutIfAvailable()
         {
             Book book = new Book("Programming C# 8.0", new Author("Ian Griffiths", "ian.griffiths@maths.ox.ac.uk", "Professor of Industrial Mathematics based in the Mathematical Institute at the University of Oxford", "https://people.maths.ox.ac.uk/griffit4"));

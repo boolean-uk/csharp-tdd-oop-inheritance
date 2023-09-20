@@ -13,5 +13,7 @@ namespace tdd_oop_inheritance.CSharp.Main
         public Book(string title, Author author): base(title) {
             this.author = author;
         }
+
+        public string AuthorName { get => author.name; }
     }
 }

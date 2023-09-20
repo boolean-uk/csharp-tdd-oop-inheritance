@@ -6,6 +6,14 @@ namespace tdd_oop_inheritance.CSharp.Test
     class ArticleTest
     {
         [Test]
+        public void shouldGetAuthorName()
+        {
+            Article article = new Article("C# Best Practices", new Author("Nigel", "nigel@gmail.com", "C# Teacher", "www.nigel.com"));
+
+            Assert.AreEqual("Nigel", article.AuthorName);
+        }
+
+        [Test]
         public void shouldCheckOutIfAvailable()
         {
             Article article = new Article("C# Best Practices", new Author("Nigel", "nigel@gmail.com", "C# Teacher", "www.nigel.com"));
