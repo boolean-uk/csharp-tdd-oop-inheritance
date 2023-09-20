@@ -8,9 +8,9 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldAddItemsToStock()
         {
-            Article article = new Article("JUnit Rocks");
-            Book book = new Book("JUnit Rocks");
-            Newspaper newspaper = new Newspaper("The Daily Java");
+            Article article = new Article("C# Best Practices");
+            Book book = new Book("Programming C# 8.0");
+            Newspaper newspaper = new Newspaper("The Daily C#");
             Library library = new Library();
 
             library.addToStock(article);
@@ -23,7 +23,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldCheckOutArticleIfAvailable()
         {
-            string title = "JUnit Rocks";
+            string title = "C# Best Practices";
             Article article = new Article(title);
             Library library = new Library();
             library.addToStock(article);
@@ -43,7 +43,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void newspaperShouldBeUnavailableForCheckOut()
         {
-            string title = "The Daily Java";
+            string title = "The Daily C#";
             Newspaper newspaper = new Newspaper(title);
             Library library = new Library();
             library.addToStock(newspaper);
@@ -53,7 +53,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldDeclineIfArticleNotAvailableToCheckout()
         {
-            string title = "JUnit Rocks";
+            string title = "C# Best Practices";
             Article article = new Article(title);
             Library library = new Library();
             library.addToStock(article);
@@ -75,7 +75,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldCheckInArticleIfOnLoan()
         {
-            string title = "JUnit Rocks";
+            string title = "C# Best Practices";
             Article article = new Article(title);
             Library library = new Library();
             library.addToStock(article);
@@ -97,7 +97,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void newspaperShouldBeUnavailableForCheckIn()
         {
-            string title = "The Daily Java";
+            string title = "The Daily C#";
             Newspaper newspaper = new Newspaper(title);
             Library library = new Library();
             library.addToStock(newspaper);
@@ -108,7 +108,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldDeclineCheckInArticleIfNotOnLoan()
         {
-            string title = "JUnit Rocks";
+            string title = "C# Best Practices";
             Article article = new Article(title);
             Library library = new Library();
             library.addToStock(article);
