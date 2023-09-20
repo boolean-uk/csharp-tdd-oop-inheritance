@@ -5,7 +5,12 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tdd-oop-inheritance.CSharp.Main", "tdd-oop-inheritance.CSharp.Main\tdd-oop-inheritance.CSharp.Main.csproj", "{B747E7EA-396B-4AE6-B931-6C2056543157}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tdd-oop-inheritance.CSharp.Test", "tdd-oop-inheritance.CSharp.Test\tdd-oop-inheritance.CSharp.Test.csproj", "{322C651E-18A4-4240-B694-7FF372BA4B7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tdd-oop-inheritance.CSharp.Test", "tdd-oop-inheritance.CSharp.Test\tdd-oop-inheritance.CSharp.Test.csproj", "{322C651E-18A4-4240-B694-7FF372BA4B7F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C81C61C0-14FF-4684-84FC-341DF3375C2A}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
