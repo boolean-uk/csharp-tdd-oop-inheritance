@@ -12,7 +12,7 @@ namespace tdd_oop_inheritance.CSharp.Test
     public class AuthorTest
     {
         [Test]
-        public void AuthorInitializatio()
+        public void AuthorInitialization()
         {
             string name = "John Doe";
             string contactInfo = "john@example.com";
