@@ -8,8 +8,8 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldAddItemsToStock()
         {
-            Article article = new Article("C# Best Practices");
-            Book book = new Book("Programming C# 8.0");
+            Article article = new Article("C# Best Practices", new Author("Nigel", "nigel@gmail.com", "C# Teacher", "www.nigel.com"));
+            Book book = new Book("Programming C# 8.0", new Author("Ian Griffiths", "ian.griffiths@maths.ox.ac.uk", "Professor of Industrial Mathematics based in the Mathematical Institute at the University of Oxford", "https://people.maths.ox.ac.uk/griffit4"));
             Newspaper newspaper = new Newspaper("The Daily C#");
             Library library = new Library();
 
@@ -24,7 +24,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         public void shouldCheckOutArticleIfAvailable()
         {
             string title = "C# Best Practices";
-            Article article = new Article(title);
+            Article article = new Article(title, new Author("Nigel", "nigel@gmail.com", "C# Teacher", "www.nigel.com"));
             Library library = new Library();
             library.addToStock(article);
             Assert.AreEqual("item has been checked out", library.checkOutItem(title));
@@ -34,7 +34,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         public void shouldCheckOutBookIfAvailable()
         {
             string title = "Programming C# 8.0";
-            Book book = new Book(title);
+            Book book = new Book(title, new Author("Ian Griffiths", "ian.griffiths@maths.ox.ac.uk", "Professor of Industrial Mathematics based in the Mathematical Institute at the University of Oxford", "https://people.maths.ox.ac.uk/griffit4"));
             Library library = new Library();
             library.addToStock(book);
             Assert.AreEqual("item has been checked out", library.checkOutItem(title));
@@ -54,7 +54,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         public void shouldDeclineIfArticleNotAvailableToCheckout()
         {
             string title = "C# Best Practices";
-            Article article = new Article(title);
+            Article article = new Article(title, new Author("Nigel", "nigel@gmail.com", "C# Teacher", "www.nigel.com"));
             Library library = new Library();
             library.addToStock(article);
             Assert.AreEqual("item has been checked out", library.checkOutItem(title));
@@ -65,7 +65,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         public void shouldDeclineIfBookNotAvailableToCheckout()
         {
             string title = "Programming C# 8.0";
-            Book book = new Book(title);
+            Book book = new Book(title, new Author("Ian Griffiths", "ian.griffiths@maths.ox.ac.uk", "Professor of Industrial Mathematics based in the Mathematical Institute at the University of Oxford", "https://people.maths.ox.ac.uk/griffit4"));
             Library library = new Library();
             library.addToStock(book);
             Assert.AreEqual("item has been checked out", library.checkOutItem(title));
@@ -76,7 +76,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         public void shouldCheckInArticleIfOnLoan()
         {
             string title = "C# Best Practices";
-            Article article = new Article(title);
+            Article article = new Article(title, new Author("Nigel", "nigel@gmail.com", "C# Teacher", "www.nigel.com"));
             Library library = new Library();
             library.addToStock(article);
             Assert.AreEqual("item has been checked out", library.checkOutItem(title));
@@ -87,7 +87,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         public void shouldCheckInBookIfOnLoan()
         {
             string title = "Programming C# 8.0";
-            Book book = new Book(title);
+            Book book = new Book(title, new Author("Ian Griffiths", "ian.griffiths@maths.ox.ac.uk", "Professor of Industrial Mathematics based in the Mathematical Institute at the University of Oxford", "https://people.maths.ox.ac.uk/griffit4"));
             Library library = new Library();
             library.addToStock(book);
             Assert.AreEqual("item has been checked out", library.checkOutItem(title));
@@ -109,7 +109,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         public void shouldDeclineCheckInArticleIfNotOnLoan()
         {
             string title = "C# Best Practices";
-            Article article = new Article(title);
+            Article article = new Article(title, new Author("Nigel", "nigel@gmail.com", "C# Teacher", "www.nigel.com"));
             Library library = new Library();
             library.addToStock(article);
             Assert.AreEqual("item is not currently on loan", library.checkInItem(title));
@@ -119,7 +119,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         public void shouldDeclineCheckInBookIfNotOnLoan()
         {
             string title = "Programming C# 8.0";
-            Book book = new Book(title);
+            Book book = new Book(title, new Author("Ian Griffiths", "ian.griffiths@maths.ox.ac.uk", "Professor of Industrial Mathematics based in the Mathematical Institute at the University of Oxford", "https://people.maths.ox.ac.uk/griffit4"));
             Library library = new Library();
             library.addToStock(book);
             Assert.AreEqual("item is not currently on loan", library.checkInItem(title));
