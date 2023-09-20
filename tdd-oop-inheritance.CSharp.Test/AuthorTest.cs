@@ -12,7 +12,7 @@ namespace tdd_oop_inheritance.CSharp.Test
     public class AuthorTest
     {
         [Test]
-        public void AuthorInitialization_ShouldSetPropertiesCorrectly()
+        public void AuthorInitializatio()
         {
             string name = "John Doe";
             string contactInfo = "john@example.com";
@@ -26,7 +26,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         }
 
         [Test]
-        public void AuthorInformationRetrieval_ShouldReturnCorrectData()
+        public void AuthorInformationRetrieval()
         {
             Author author = new Author("John Doe", "john@example.com", "www.example.com");
 

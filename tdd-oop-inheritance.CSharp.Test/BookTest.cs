@@ -7,7 +7,7 @@ namespace tdd_oop_inheritance.CSharp.Test
     public class BookTest
     {
         [Test]
-        public void shouldCheckOutIfAvailable()
+        public void ShouldCheckOutIfAvailable()
         {
             Author author = new Author("John Doe", "john@example.com", "www.example.com");
             Book book = new Book("JUnit Rocks", author);
@@ -16,7 +16,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         }
 
         [Test]
-        public void shouldDeclineIfNotAvailableToCheckout()
+        public void ShouldDeclineIfNotAvailableToCheckout()
         { 
             Author author = new Author("John Doe", "john@example.com", "www.example.com");
             Book book = new Book("JUnit Rocks",author);
@@ -26,7 +26,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         }
 
         [Test]
-        public void shouldCheckInIfOnLoan()
+        public void ShouldCheckInIfOnLoan()
         {
             Author author = new Author("John Doe", "john@example.com", "www.example.com");
             Book book = new Book("JUnit Rocks", author);
@@ -36,7 +36,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         }
 
         [Test]
-        public void shouldDeclineCheckInIfNotOnLoan()
+        public void ShouldDeclineCheckInIfNotOnLoan()
         {
             Author author = new Author("John Doe", "john@example.com", "www.example.com");
             Book book = new Book("JUnit Rocks", author);
