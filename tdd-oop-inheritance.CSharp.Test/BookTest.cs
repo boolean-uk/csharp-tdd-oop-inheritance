@@ -3,39 +3,45 @@ using NUnit.Framework;
 
 namespace tdd_oop_inheritance.CSharp.Test
 {
+    [TestFixture]
     public class BookTest
     {
         [Test]
-        public void shouldCheckOutIfAvailable()
+        public void ShouldCheckOutIfAvailable()
         {
-            Book book = new Book("JUnit Rocks");
-            Assert.AreEqual("item has been checked out", book.checkOut());
+            Author author = new Author("John Doe", "john@example.com", "www.example.com");
+            Book book = new Book("JUnit Rocks", author);
+
+            Assert.AreEqual("Item has been checked out!", book.CheckOut());
         }
 
         [Test]
-        public void shouldDeclineIfNotAvailableToCheckout()
-        {
-            Book book = new Book("JUnit Rocks");
-            book.checkOut();
+        public void ShouldDeclineIfNotAvailableToCheckout()
+        { 
+            Author author = new Author("John Doe", "john@example.com", "www.example.com");
+            Book book = new Book("JUnit Rocks",author);
+            book.CheckOut();
 
-            Assert.AreEqual("item is currently on loan", book.checkOut());
+            Assert.AreEqual("Item is currently on loan!", book.CheckOut());
         }
 
         [Test]
-        public void shouldCheckInIfOnLoan()
+        public void ShouldCheckInIfOnLoan()
         {
-            Book book = new Book("JUnit Rocks");
-            book.checkOut();
+            Author author = new Author("John Doe", "john@example.com", "www.example.com");
+            Book book = new Book("JUnit Rocks", author);
+            book.CheckOut();
 
-            Assert.AreEqual("item has been checked in", book.checkIn());
+            Assert.AreEqual("Item has been checked in!", book.CheckIn());
         }
 
         [Test]
-        public void shouldDeclineCheckInIfNotOnLoan()
+        public void ShouldDeclineCheckInIfNotOnLoan()
         {
-            Book book = new Book("JUnit Rocks");
+            Author author = new Author("John Doe", "john@example.com", "www.example.com");
+            Book book = new Book("JUnit Rocks", author);
 
-            Assert.AreEqual("item is not currently on loan", book.checkIn());
+            Assert.AreEqual("Item is not currently on loan!", book.CheckIn());
         }
     }
 }
