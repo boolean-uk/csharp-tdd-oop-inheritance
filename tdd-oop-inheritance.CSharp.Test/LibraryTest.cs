@@ -15,7 +15,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         public void shouldAddToStock()
         {
             Library library = new Library();
-            Article article = new Article("JUnit Rocks");
+            Article article = new Article("JUnit Rocks", "JJ Abrams", "jjabrams@gmail.com", "abramsbooks.com");
 
             library.addToStock(article);
             library.getStocks();
@@ -35,7 +35,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         public void shouldCheckOut()
         {
             Library library = new Library();
-            Article article = new Article("JUnit Rocks");
+            Article article = new Article("JUnit Rocks", "JJ Abrams", "jjabrams@gmail.com", "abrams.net");
 
             Assert.Equals("item has been checked out", article.checkOut());
             // Assert.Equals("item is currently on loan", article.checkOut());
