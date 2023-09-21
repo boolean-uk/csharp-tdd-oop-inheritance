@@ -37,9 +37,9 @@ namespace tdd_oop_inheritance.CSharp.Test
             Library library = new Library();
             Article article = new Article("JUnit Rocks", "JJ Abrams", "jjabrams@gmail.com", "abrams.net");
 
-            Assert.Equals("item has been checked out", article.checkOut());
+            Assert.IsTrue(library.checkOut("JUnit Rocks") == "item has been checked out");
             // Assert.Equals("item is currently on loan", article.checkOut());
-            
+
         }
     }
 }

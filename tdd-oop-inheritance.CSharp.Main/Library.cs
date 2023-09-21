@@ -21,29 +21,29 @@ namespace tdd_oop_inheritance.CSharp.Main
         // is called a lambda expression (https://www.w3schools.com/java/java_lambda.asp)
         public string checkIn(string title) {
 
-            List<Stock> filtered = (List<Stock>)this.stocks.Where(stock => stock.title.Equals(title));
-
-            if (filtered.Count() < 1) {
-                return "item is not part of the library's collection";
-            }
-            else
+           if(stocks.Any(x => x.title == title))
             {
-                return filtered[0].checkIn();
+                Stock item = stocks.Where(x => x.title == title).FirstOrDefault();
+                if (item!=null)
+                {
+                 item.checkIn();
+                }
             }
+            return "item is not part of the library's collection";
         }
 
 
         public string checkOut(string title) {
 
-            List<Stock> filtered = (List<Stock>)this.stocks.Where(stock => stock.Equals(title));
-
-            if (filtered.Count() < 1) {
-                return "item is not part of the library's collection";
-            }
-            else
+            if (stocks.Any(x => x.title == title))
             {
-                return filtered[0].checkOut();
+                Stock item = stocks.Where(x => x.title == title).FirstOrDefault();
+                if (item != null)
+                {
+                    item.checkOut();
+                }
             }
+            return "item has been checked out";
         }
 
     }
