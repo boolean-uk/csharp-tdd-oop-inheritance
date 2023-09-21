@@ -8,7 +8,11 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldCheckOutIfAvailable()
             {
-                Article article = new Article("JUnit Rocks", false);
+                Author author = new Author();
+                author.Name = "Tolkien";
+                author.Email = "LOTR@middleearth.com";
+                author.Website = "www.tolkien.shire"; 
+                Article article = new Article(author,"JUnit Rocks", false);
                 Assert.AreEqual("item has been checked out", article.checkOut());
             }
 

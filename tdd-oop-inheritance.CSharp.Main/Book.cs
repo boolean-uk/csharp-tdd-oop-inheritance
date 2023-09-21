@@ -8,12 +8,18 @@ namespace tdd_oop_inheritance.CSharp.Main
 {
     public class Book : ReadingMaterial{
         //public string title;
+        private Author _author;
 
         bool onLoan = false;
 
         public Book(string title, bool onLoan) :base(title, onLoan) 
         {
             //this.title = title;
+        }
+
+        public Book(Author author, string title, bool onLoan) : base(title, onLoan)
+        {
+            _author = author;
         }
 
         public new bool isOnLoan() {
