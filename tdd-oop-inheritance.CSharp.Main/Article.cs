@@ -1,40 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace tdd_oop_inheritance.CSharp.Main
+﻿namespace tdd_oop_inheritance.CSharp.Main
 {
-    public class Article {
-        public string title;
+    public class Article : Item
+    {
+        public Article(string title) : base(title) { }
 
-        bool onLoan = false;
-
-        public Article(string title) {
-            this.title = title;
-        }
-        
-        public bool isOnLoan()  {
+        public override bool isOnLoan()
+        {
             return onLoan;
         }
 
-        public string checkIn() {
-            if (!this.isOnLoan()) {
+        public override string checkIn()
+        {
+            if (!this.isOnLoan())
+            {
                 return "item is not currently on loan";
             }
 
-            this.onLoan = false;
+            base.onLoan = false;
 
             return "item has been checked in";
         }
 
-        public string checkOut() {
-            if (this.isOnLoan()) {
+        public override string checkOut()
+        {
+            if (this.isOnLoan())
+            {
                 return "item is currently on loan";
             }
 
-            this.onLoan = true;
+            base.onLoan = true;
 
             return "item has been checked out";
         }
