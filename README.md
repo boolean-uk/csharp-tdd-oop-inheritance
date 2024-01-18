@@ -115,7 +115,8 @@ class Plane : Vehicle {
 
 ## Exercise 1
 
-There are some classes and tests in the usual place. It's a basic implementation of a library's collection of books, articles and newspapers, with quite a bit of repetition and redundancy.
+There are some classes and tests in the usual place. It's a basic implementation of a library's collection of books, 
+articles and newspapers, with quite a bit of repetition and redundancy.
 
 - Refactor the code base using inheritance to remove the repetition
 - Modify the existing tests to prove your solution works as intended
@@ -123,7 +124,8 @@ There are some classes and tests in the usual place. It's a basic implementation
 
 ## Exercise 2
 
-Books and Articles should both hold information about their authors (name, contact information, website). Newspapers should not have this information as they are written by multiple people.
+Books and Articles should both hold information about their authors (name, contact information, website). 
+Newspapers should not have this information as they are written by multiple people.
 
 Introduce this new functionality with an Author class, and use *composition* (dependency injection) rather than inheritance to complete it.
 
