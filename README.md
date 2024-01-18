@@ -115,7 +115,8 @@ class Plane : Vehicle {
 
 ## Exercise 1
 
-There are some classes and tests in the usual place. It's a basic implementation of a library's collection of books, articles and newspapers, with quite a bit of repetition and redundancy.
+There are some classes and tests in the usual place. It's a basic implementation of a library's collection of books, 
+articles and newspapers, with quite a bit of repetition and redundancy.
 
 - Refactor the code base using inheritance to remove the repetition
 - Modify the existing tests to prove your solution works as intended
