@@ -2,7 +2,12 @@
 {
     public class Article : LibraryItem
     {
-        public Article(string title) : base(title) { }
+        public Author Author { get; private set; }
+
+        public Article(string title , Author author) : base(title)
+        {
+            Author = author;
+        }
 
         public override string CheckIn()
         {

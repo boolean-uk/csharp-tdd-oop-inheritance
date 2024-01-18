@@ -6,10 +6,24 @@ namespace tdd_oop_inheritance.CSharp.Test
     [TestFixture]
     public class LibraryItemTest
     {
+        private Author _author;
+        private Book _book;
+        private Article _article;
+        private Newspaper _newspaper;
+
+        [SetUp]
+        public void Setup()
+        {
+            _author = new Author("John Doe" , "johndoe@example.com" , "www.johndoe.com");
+            _book = new Book("A Great Book" , _author);
+            _article = new Article("An Interesting Article" , _author);
+            _newspaper = new Newspaper("Today's News");
+        }
+
         [Test]
         public void ShouldCheckInAndOutBook()
         {
-            Book book = new Book("A Great Book");
+            Book book = new Book("A Great Book" , _author);
 
             Assert.AreEqual("item has been checked out" , book.CheckOut());
             Assert.AreEqual("item has been checked in" , book.CheckIn());
@@ -18,7 +32,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void ShouldCheckInAndOutArticle()
         {
-            Article article = new Article("An Interesting Article");
+            Article article = new Article("An Interesting Article" , _author);
 
             Assert.AreEqual("item has been checked out" , article.CheckOut());
             Assert.AreEqual("item has been checked in" , article.CheckIn());

@@ -13,5 +13,4 @@
         public abstract string CheckIn();
         public abstract string CheckOut();
     }
-
 }

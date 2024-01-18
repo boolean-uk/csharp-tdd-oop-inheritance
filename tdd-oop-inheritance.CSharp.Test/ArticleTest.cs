@@ -3,39 +3,49 @@ using tdd_oop_inheritance.CSharp.Main;
 
 namespace tdd_oop_inheritance.CSharp.Test
 {
-    class ArticleTest
+    [TestFixture]
+    public class ArticleTest
     {
-        [Test]
-        public void shouldCheckOutIfAvailable()
+        private Author _author;
+        private Article _article;
+
+        [SetUp]
+        public void Setup()
         {
-            Article article = new Article("JUnit Rocks");
-            Assert.AreEqual("item has been checked out" , article.CheckOut());
+            _author = new Author("Jane Doe" , "janedoe@example.com" , "www.janedoe.com");
+            _article = new Article("An Interesting Article" , _author);
         }
 
         [Test]
-        public void shouldDeclineIfNotAvailableToCheckout()
+        public void ShouldCheckOutIfAvailable()
         {
-            Article article = new Article("JUnit Rocks");
-            article.CheckOut();
-
-            Assert.AreEqual("item is currently on loan" , article.CheckOut());
+            Assert.AreEqual("item has been checked out" , _article.CheckOut());
         }
 
         [Test]
-        public void shouldCheckInIfOnLoan()
+        public void ShouldDeclineIfNotAvailableToCheckout()
         {
-            Article article = new Article("JUnit Rocks");
-            article.CheckOut();
-
-            Assert.AreEqual("item has been checked in" , article.CheckIn());
+            _article.CheckOut();
+            Assert.AreEqual("item is currently on loan" , _article.CheckOut());
         }
 
         [Test]
-        public void shouldDeclineCheckInIfNotOnLoan()
+        public void ShouldCheckInIfOnLoan()
         {
-            Article article = new Article("JUnit Rocks");
+            _article.CheckOut();
+            Assert.AreEqual("item has been checked in" , _article.CheckIn());
+        }
 
-            Assert.AreEqual("item is not currently on loan" , article.CheckIn());
+        [Test]
+        public void ShouldDeclineCheckInIfNotOnLoan()
+        {
+            Assert.AreEqual("item is not currently on loan" , _article.CheckIn());
+        }
+
+        [Test]
+        public void ShouldHaveCorrectAuthor()
+        {
+            Assert.AreEqual(_author , _article.Author);
         }
     }
 }

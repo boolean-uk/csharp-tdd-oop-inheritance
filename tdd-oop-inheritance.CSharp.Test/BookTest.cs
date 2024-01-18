@@ -3,39 +3,49 @@ using tdd_oop_inheritance.CSharp.Main;
 
 namespace tdd_oop_inheritance.CSharp.Test
 {
+    [TestFixture]
     public class BookTest
     {
-        [Test]
-        public void shouldCheckOutIfAvailable()
+        private Author _author;
+        private Book _book;
+
+        [SetUp]
+        public void Setup()
         {
-            Book book = new Book("JUnit Rocks");
-            Assert.AreEqual("item has been checked out" , book.CheckOut());
+            _author = new Author("John Doe" , "johndoe@example.com" , "www.johndoe.com");
+            _book = new Book("A Great Book" , _author);
         }
 
         [Test]
-        public void shouldDeclineIfNotAvailableToCheckout()
+        public void ShouldCheckOutIfAvailable()
         {
-            Book book = new Book("JUnit Rocks");
-            book.CheckOut();
-
-            Assert.AreEqual("item is currently on loan" , book.CheckOut());
+            Assert.AreEqual("item has been checked out" , _book.CheckOut());
         }
 
         [Test]
-        public void shouldCheckInIfOnLoan()
+        public void ShouldDeclineIfNotAvailableToCheckout()
         {
-            Book book = new Book("JUnit Rocks");
-            book.CheckOut();
-
-            Assert.AreEqual("item has been checked in" , book.CheckIn());
+            _book.CheckOut();
+            Assert.AreEqual("item is currently on loan" , _book.CheckOut());
         }
 
         [Test]
-        public void shouldDeclineCheckInIfNotOnLoan()
+        public void ShouldCheckInIfOnLoan()
         {
-            Book book = new Book("JUnit Rocks");
+            _book.CheckOut();
+            Assert.AreEqual("item has been checked in" , _book.CheckIn());
+        }
 
-            Assert.AreEqual("item is not currently on loan" , book.CheckIn());
+        [Test]
+        public void ShouldDeclineCheckInIfNotOnLoan()
+        {
+            Assert.AreEqual("item is not currently on loan" , _book.CheckIn());
+        }
+
+        [Test]
+        public void ShouldHaveCorrectAuthor()
+        {
+            Assert.AreEqual(_author , _book.Author);
         }
     }
 }
