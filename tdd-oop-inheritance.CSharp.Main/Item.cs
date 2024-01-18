@@ -1,9 +1,9 @@
 ﻿namespace tdd_oop_inheritance.CSharp.Main
 {
-    public abstract class Item
+    public class Item
     {
         public string Title { get; }
-        public bool onLoan;
+        private bool onLoan;
 
         protected Item(string title)
         {
@@ -11,11 +11,33 @@
             onLoan = false;
         }
 
-        public abstract bool isOnLoan();
+        public bool isOnLoan()
+        {
+            return onLoan;
+        }
 
-        public abstract string checkIn();
+        public virtual string checkIn()
+        {
+            if (!this.isOnLoan())
+            {
+                return "item is not currently on loan";
+            }
 
-        public abstract string checkOut();
+            this.onLoan = false;
 
+            return "item has been checked in";
+        }
+
+        public virtual string checkOut()
+        {
+            if (this.isOnLoan())
+            {
+                return "item is currently on loan";
+            }
+
+            this.onLoan = true;
+
+            return "item has been checked out";
+        }
     }
 }

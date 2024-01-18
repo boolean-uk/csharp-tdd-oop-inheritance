@@ -2,17 +2,9 @@
 {
     public class Newspaper : Item
     {
-
-        //private bool onLoan = false;
-
         public Newspaper(string title) : base(title)
         {
 
-        }
-
-        public override bool isOnLoan()
-        {
-            return onLoan;
         }
 
         public override string checkIn()
