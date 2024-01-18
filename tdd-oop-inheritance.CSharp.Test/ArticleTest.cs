@@ -11,7 +11,7 @@ namespace tdd_oop_inheritance.CSharp.Test
 
         [SetUp]
         public void SetUp() {
-            author = new Author("Test Testsson", "test.Testsson@email.com", "www.testtesstsson.com");
+            author = new Author("Test Testsson", "test.testsson@email.com", "www.testtesstsson.com");
             string title = "JUnit Rocks";
             article = new Article(title, author);
         }
@@ -43,5 +43,12 @@ namespace tdd_oop_inheritance.CSharp.Test
 
             Assert.AreEqual("item is not currently on loan", article.checkIn());
         }
+
+        [Test]
+        public void shouldGetAuthorInformation()
+        {
+            Assert.AreEqual("Title: JUnit Rocks, On Loan: False\nAuthor: Test Testsson\nContact information: test.testsson@email.com\nWebsite: www.testtesstsson.com", article.getInformation());
+        }
+
     }
 }
