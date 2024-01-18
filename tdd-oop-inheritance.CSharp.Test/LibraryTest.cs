@@ -9,9 +9,11 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void addToStockTest()
         {
+            Author testAuthor = new Author("P.Adams", "04125636", "no");
+            Author testAuthor2 = new Author("Dostoyevsky", "no", "no");
             library = new Library();
-            Book testBook = new Book("Roadside Picnic");
-            Article testArticle = new Article("The Bronze Age Collapse");
+            Book testBook = new Book("Roadside Picnic", testAuthor2);
+            Article testArticle = new Article("The Bronze Age Collapse", testAuthor);
             Newspaper testNewspaper = new Newspaper("Fake News");
             Assert.AreEqual(testBook, library.addToStock(testBook).ElementAt(0));
             Assert.AreEqual(testArticle, library.addToStock(testArticle).ElementAt(1));

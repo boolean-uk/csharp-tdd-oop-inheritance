@@ -8,14 +8,17 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldCheckOutIfAvailable()
         {
-            Article article = new Article("JUnit Rocks");
+            Author testAuthor = new Author("P.Adams", "04125636", "no");
+            Article article = new Article("JUnit Rocks", testAuthor);
             Assert.AreEqual("item has been checked out", article.checkOut());
         }
 
         [Test]
         public void shouldDeclineIfNotAvailableToCheckout()
         {
-            Article article = new Article("JUnit Rocks");
+            Author testAuthor = new Author("P.Adams", "04125636", "no");
+
+            Article article = new Article("JUnit Rocks", testAuthor);
             article.checkOut();
 
             Assert.AreEqual("item is currently on loan", article.checkOut());
@@ -24,7 +27,9 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldCheckInIfOnLoan()
         {
-            Article article = new Article("JUnit Rocks");
+            Author testAuthor = new Author("P.Adams", "04125636", "no");
+
+            Article article = new Article("JUnit Rocks", testAuthor);
             article.checkOut();
 
             Assert.AreEqual("item has been checked in", article.checkIn());
@@ -33,9 +38,18 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldDeclineCheckInIfNotOnLoan()
         {
-            Article article = new Article("JUnit Rocks");
+            Author testAuthor = new Author("P.Adams", "04125636", "no");
+
+            Article article = new Article("JUnit Rocks", testAuthor);
 
             Assert.AreEqual("item is not currently on loan", article.checkIn());
+        }
+        [Test]
+        public void shouldHaveAuthor()
+        {
+            Author testAuthor = new Author("P.Adams", "04125636", "no");
+            Article article = new Article("JUnit Rocks", testAuthor);
+            Assert.AreEqual(testAuthor, article.author);
         }
     }
 }
