@@ -6,15 +6,21 @@ using System.Threading.Tasks;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public class Library {
+    public class Library 
+    {
+
+        List<Material> materials = new List<Material>();
+        /*
         List<Article> articles = new List<Article>();
         List<Book> books = new List<Book>();
         List<Newspaper> newspapers = new List<Newspaper>();
-
-        public void addToStock(Article item) {
-            this.articles.Add(item);
+        */
+        public void addToStock(Material item) 
+        {
+            this.materials.Add(item);
         }
 
+        /*
         public void addToStock(Book item) {
             this.books.Add(item);
         }
@@ -22,12 +28,14 @@ namespace tdd_oop_inheritance.CSharp.Main
         public void addToStock(Newspaper item) {
             this.newspapers.Add(item);
         }
+        */
 
         // The following methods may contain code that you are unfamiliar with. The strange syntax of article -> something
         // is called a lambda expression (https://www.w3schools.com/java/java_lambda.asp)
-        public string checkInArticle(string title) {
+        public string checkInMaterial(string title) 
+        {
 
-            List<Article> filtered = (List<Article>)this.articles.Where(article => article.title.Equals(title));
+            List <Material> filtered = (List<Material>)this.materials.Where(material => material.getTitle().Equals(title));
 
             if (filtered.Count() < 1) {
                 return "item is not part of the library's collection";
@@ -36,8 +44,9 @@ namespace tdd_oop_inheritance.CSharp.Main
             return filtered[0].checkIn();
         }
 
-        public string checkOutArticle(string title) {
-            List<Article> filtered = (List<Article>)this.articles.Where(article => article.title.Equals(title));
+        public string checkOutMaterial(string title) 
+        {
+            List<Material> filtered = (List<Material>)this.materials.Where(material => material.getTitle().Equals(title));
 
             if (filtered.Count() < 1) {
                 return "item is not part of the library's collection";
@@ -46,6 +55,8 @@ namespace tdd_oop_inheritance.CSharp.Main
             return filtered[0].checkOut();
         }
 
+
+        /*
         public string checkInBook(string title) {
             List<Book> filtered = (List<Book>)this.books.Where(book => book.Equals(title));
 
@@ -84,6 +95,12 @@ namespace tdd_oop_inheritance.CSharp.Main
             }
 
             return filtered[0].checkOut();
+        }
+        */
+
+        public List<Material> getElements()
+        {
+            return this.materials.ToList();
         }
     }
 }
