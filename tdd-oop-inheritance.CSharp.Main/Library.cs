@@ -15,7 +15,6 @@ namespace tdd_oop_inheritance.CSharp.Main
         }
 
         public string checkInItem(string title) {
-            
             List<ReadableItem> filtered = (List<ReadableItem>)items.Where(item => item.getTitle().Equals(title));
 
             if (filtered.Count < 1) {
@@ -26,13 +25,22 @@ namespace tdd_oop_inheritance.CSharp.Main
         }
     
         public string checkOutItem(string title) {
-             List<ReadableItem> filtered = (List<ReadableItem>)items.Where(item => item.getTitle().Equals(title));
+            List<ReadableItem> filtered = (List<ReadableItem>)items.Where(item => item.getTitle().Equals(title));
 
             if (filtered.Count < 1) {
                 return "item is not part of the library's collection";
             }
             return filtered[0].checkOut();
             
+        }
+
+        // Exercise 2
+        public string checkInformation(string title) {
+            List<ReadableItem> filtered = (List<ReadableItem>)items.Where(item => item.getTitle().Equals(title));
+            if (filtered.Count < 1) {
+                return "item is not part of the library's collection";
+            }
+            return filtered[0].getInformation();
         }
 
        

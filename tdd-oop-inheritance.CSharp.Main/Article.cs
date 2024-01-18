@@ -7,37 +7,17 @@ using System.Threading.Tasks;
 namespace tdd_oop_inheritance.CSharp.Main
 {
     public class Article : ReadableItem {
-        /*
-        public string title;
 
-        bool onLoan = false;*/
-
-        public Article(string title) {
+        private Author Author;  // Composision: Author has fields
+        public Article(string title, Author author) {
             Title = title;
-        }
-        /*
-        public bool isOnLoan()  {
-            return onLoan;
+            Author = author; // Dependency Injection: author is injected
         }
 
-        public string checkIn() {
-            if (!this.isOnLoan()) {
-                return "item is not currently on loan";
-            }
-
-            this.onLoan = false;
-
-            return "item has been checked in";
+        public override string getInformation()
+        {
+            return base.getInformation() + $"\nAuthor: {Author.getName()}\nContact information: {Author.getContactInformation()}\nWebsite: {Author.getWebsite()}";
         }
 
-        public string checkOut() {
-            if (this.isOnLoan()) {
-                return "item is currently on loan";
-            }
-
-            this.onLoan = true;
-
-            return "item has been checked out";
-        }*/
     }
 }

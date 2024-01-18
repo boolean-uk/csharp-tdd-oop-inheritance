@@ -33,5 +33,10 @@ namespace tdd_oop_inheritance.CSharp.Main
         public string? getTitle() {
             return Title;
         }
+
+        // Exercise 2
+        public virtual string getInformation() {
+            return $"Title: {Title}, On Loan: {onLoan}";
+        }
     }
 }
