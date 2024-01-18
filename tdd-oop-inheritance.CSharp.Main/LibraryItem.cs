@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public abstract class LibraryItem {
+    public class LibraryItem {
 
         public string title { get; set; }
         bool onLoan = false;
