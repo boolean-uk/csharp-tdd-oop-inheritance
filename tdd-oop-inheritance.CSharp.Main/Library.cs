@@ -7,37 +7,74 @@ using System.Threading.Tasks;
 namespace tdd_oop_inheritance.CSharp.Main
 {
     public class Library {
-        List<Article> articles = new List<Article>();
-        List<Book> books = new List<Book>();
-        List<Newspaper> newspapers = new List<Newspaper>();
 
-        public void addToStock(Article item) {
-            this.articles.Add(item);
+        private List<Library> items = new List<Library>();
+        protected string title = "";
+        protected bool onLoan = false;
+
+        public bool isOnLoan()
+        {
+            return onLoan;
         }
 
-        public void addToStock(Book item) {
-            this.books.Add(item);
+        public virtual string checkIn()
+        {
+            if (!this.isOnLoan())
+            {
+                return "item is not currently on loan";
+            }
+
+            this.onLoan = false;
+
+            return "item has been checked in";
         }
 
-        public void addToStock(Newspaper item) {
-            this.newspapers.Add(item);
+        public virtual string checkOut()
+        {
+            if (this.isOnLoan())
+            {
+                return "item is currently on loan";
+            }
+
+            this.onLoan = true;
+
+            return "item has been checked out";
+        }
+
+        public void addToStock(Library item) {
+            this.items.Add(item);
         }
 
         // The following methods may contain code that you are unfamiliar with. The strange syntax of article -> something
         // is called a lambda expression (https://www.w3schools.com/java/java_lambda.asp)
-        public string checkInArticle(string title) {
 
-            List<Article> filtered = (List<Article>)this.articles.Where(article => article.title.Equals(title));
+        public string checkInItem(string title)
+        {
+            List<Library> filtered = new List<Library>();
 
-            if (filtered.Count() < 1) {
+            foreach (Library item in this.items)
+            {
+                if (item.title == title)
+                    filtered.Add(item);
+            }
+
+            if (filtered.Count() < 1)
+            {
                 return "item is not part of the library's collection";
             }
 
             return filtered[0].checkIn();
         }
 
-        public string checkOutArticle(string title) {
-            List<Article> filtered = (List<Article>)this.articles.Where(article => article.title.Equals(title));
+        public string checkOutItem(string title) {
+
+            List<Library> filtered = new List<Library>();
+
+            foreach (Library item in this.items)
+            {
+                if (item.title == title)
+                    filtered.Add(item);
+            }
 
             if (filtered.Count() < 1) {
                 return "item is not part of the library's collection";
@@ -46,44 +83,14 @@ namespace tdd_oop_inheritance.CSharp.Main
             return filtered[0].checkOut();
         }
 
-        public string checkInBook(string title) {
-            List<Book> filtered = (List<Book>)this.books.Where(book => book.Equals(title));
-
-            if (filtered.Count() < 1) {
-                return "item is not part of the library's collection";
-            }
-
-            return filtered[0].checkIn();
+        public void AddItems(Library item)
+        {
+            items.Add(item);
         }
 
-        public string checkOutBook(string title) {
-            List<Book> filtered = (List<Book>)this.books.Where(book => book.Equals(title));
-
-            if (filtered.Count() < 1) {
-                return "item is not part of the library's collection";
-            }
-
-            return filtered[0].checkOut();
-        }
-
-        public string checkInNewspaper(string title) {
-            List<Newspaper> filtered = (List<Newspaper>)this.newspapers.Where(newspaper => newspaper.title.Equals(title));
-
-            if (filtered.Count() < 1) {
-                return "item is not part of the library's collection";
-            }
-
-            return filtered[0].checkIn();
-        }
-
-        public string checkOutNewspaper(string title) {
-            List<Newspaper> filtered = (List<Newspaper>)this.newspapers.Where(newspaper => newspaper.title.Equals(title));
-
-            if (filtered.Count() < 1) {
-                return "item is not part of the library's collection";
-            }
-
-            return filtered[0].checkOut();
+        public int GetItems()
+        {
+            return this.items.Count();
         }
     }
 }
