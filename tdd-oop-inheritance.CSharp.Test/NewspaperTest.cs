@@ -5,18 +5,28 @@ namespace tdd_oop_inheritance.CSharp.Test
 {
     public class NewspaperTest
     {
+
+        private Newspaper newspaper;
+        [SetUp]
+        public void SetUp() {
+            newspaper = new Newspaper("The Daily Java");
+        }
         [Test]
         public void shouldBeUnavailableForCheckIn()
         {
-            Newspaper newspaper = new Newspaper("The Daily Java");
             Assert.AreEqual("newspapers are not available for loan", newspaper.checkIn());
         }
 
         [Test]
         public void shouldBeUnavailableForCheckOut()
         {
-            Newspaper newspaper = new Newspaper("The Daily Java");
+            
             Assert.AreEqual("newspapers are not available for loan", newspaper.checkOut());
+        }
+
+        [Test]
+        public void shouldGetGenericInformation() {
+            Assert.AreEqual("Title: The Daily Java, On Loan: False", newspaper.getInformation());
         }
     }
 }
