@@ -9,7 +9,7 @@ namespace tdd_oop_inheritance.CSharp.Main
     public class Newspaper : Library
     {
         public Newspaper(string title) {
-            this.name = title;
+            this.title = title;
         }
 
         public override string checkIn() {

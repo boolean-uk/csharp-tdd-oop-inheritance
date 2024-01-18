@@ -8,8 +8,11 @@ namespace tdd_oop_inheritance.CSharp.Main
 {
     public class Article : Library{
 
-        public Article(string title) {
-            this.name = title;
+        Author author;
+
+        public Article(string title, string authorName, string email, string website) {
+            this.title = title;
+            author = new Author(authorName, email, website);
         }
     }
 }

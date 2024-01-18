@@ -8,8 +8,8 @@ namespace tdd_oop_inheritance.CSharp.Main
 {
     public class Library {
 
-        public List<Library> items = new List<Library>();
-        protected string name = "";
+        private List<Library> items = new List<Library>();
+        protected string title = "";
         protected bool onLoan = false;
 
         public bool isOnLoan()
@@ -54,7 +54,7 @@ namespace tdd_oop_inheritance.CSharp.Main
 
             foreach (Library item in this.items)
             {
-                if (item.name == title)
+                if (item.title == title)
                     filtered.Add(item);
             }
 
@@ -72,7 +72,7 @@ namespace tdd_oop_inheritance.CSharp.Main
 
             foreach (Library item in this.items)
             {
-                if (item.name == title)
+                if (item.title == title)
                     filtered.Add(item);
             }
 
@@ -81,6 +81,16 @@ namespace tdd_oop_inheritance.CSharp.Main
             }
 
             return filtered[0].checkOut();
+        }
+
+        public void AddItems(Library item)
+        {
+            items.Add(item);
+        }
+
+        public int GetItems()
+        {
+            return this.items.Count();
         }
     }
 }
