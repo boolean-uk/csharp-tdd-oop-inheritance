@@ -5,17 +5,25 @@ namespace tdd_oop_inheritance.CSharp.Test
 {
     public class BookTest
     {
+        Author author;
+        [SetUp]
+
+        public void Setup()
+        {
+            author = new Author("name", "contact", "web");
+
+        }
         [Test]
         public void shouldCheckOutIfAvailable()
         {
-            Book book = new Book("JUnit Rocks");
+            Book book = new Book("JUnit Rocks", author);
             Assert.AreEqual("item has been checked out", book.checkOut());
         }
 
         [Test]
         public void shouldDeclineIfNotAvailableToCheckout()
         {
-            Book book = new Book("JUnit Rocks");
+            Book book = new Book("JUnit Rocks", author);
             book.checkOut();
 
             Assert.AreEqual("item is currently on loan", book.checkOut());
@@ -24,7 +32,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldCheckInIfOnLoan()
         {
-            Book book = new Book("JUnit Rocks");
+            Book book = new Book("JUnit Rocks", author);
             book.checkOut();
 
             Assert.AreEqual("item has been checked in", book.checkIn());
@@ -33,9 +41,17 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldDeclineCheckInIfNotOnLoan()
         {
-            Book book = new Book("JUnit Rocks");
+            Book book = new Book("JUnit Rocks", author);
 
             Assert.AreEqual("item is not currently on loan", book.checkIn());
+        }
+
+        [Test]
+        public void HasAuthor()
+        {
+            Book book = new Book("JUnit Rocks", author);
+
+            Assert.That(book.GetAuthor(), Is.EqualTo(author.GetAuthorInfo()));
         }
     }
 }
