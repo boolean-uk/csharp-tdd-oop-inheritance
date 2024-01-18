@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public class Article {
+    public class Article : ReadableItem {
+        /*
         public string title;
 
-        bool onLoan = false;
+        bool onLoan = false;*/
 
         public Article(string title) {
-            this.title = title;
+            Title = title;
         }
-        
+        /*
         public bool isOnLoan()  {
             return onLoan;
         }
@@ -37,6 +38,6 @@ namespace tdd_oop_inheritance.CSharp.Main
             this.onLoan = true;
 
             return "item has been checked out";
-        }
+        }*/
     }
 }
