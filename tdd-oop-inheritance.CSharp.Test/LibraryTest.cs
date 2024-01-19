@@ -8,6 +8,7 @@ namespace tdd_oop_inheritance.CSharp.Test
     {
 
         Library lib;
+        Author author;
         Book book;
         Article article;
         Newspaper newspaper;
@@ -15,9 +16,10 @@ namespace tdd_oop_inheritance.CSharp.Test
         [SetUp]
         public void SetUp ()
         {
+            author = new Author("Adrian", "adrian@gmail.com", "www.adrian.com");
             lib = new Library();
-            book = new Book("JUnit Rocks");
-            article = new Article("JUnit doesn't rock");
+            book = new Book("JUnit Rocks", author);
+            article = new Article("JUnit doesn't rock", author);
             newspaper = new Newspaper("JUnit..");
 
             lib.addToStock(book);
