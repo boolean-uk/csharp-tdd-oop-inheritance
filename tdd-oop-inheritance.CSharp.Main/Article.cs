@@ -6,37 +6,12 @@ using System.Threading.Tasks;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public class Article {
-        public string title;
-
-        bool onLoan = false;
-
-        public Article(string title) {
-            this.title = title;
-        }
-        
-        public bool isOnLoan()  {
-            return onLoan;
+    public class Article : Item, IAuthorable {
+        private Author _author;
+        public Author Author { get { return _author; } }
+        public Article(string title, Author author) : base(title) {
+            _author = author;
         }
 
-        public string checkIn() {
-            if (!this.isOnLoan()) {
-                return "item is not currently on loan";
-            }
-
-            this.onLoan = false;
-
-            return "item has been checked in";
-        }
-
-        public string checkOut() {
-            if (this.isOnLoan()) {
-                return "item is currently on loan";
-            }
-
-            this.onLoan = true;
-
-            return "item has been checked out";
-        }
     }
 }
