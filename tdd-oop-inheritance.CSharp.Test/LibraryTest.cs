@@ -13,8 +13,8 @@ namespace tdd_oop_inheritance.CSharp.Test
             checkedOutbook.checkOut();
             library.paperThings.Add(checkedOutbook);
             library.paperThings.Add(new Book("testBook"));
-            library.paperThings.Add(new Book("testArticle"));
-            library.paperThings.Add(new Book("testPaper"));
+            library.paperThings.Add(new Article("testArticle"));
+            library.paperThings.Add(new Newspaper("testPaper"));
 
         }
         [Test]
@@ -38,6 +38,11 @@ namespace tdd_oop_inheritance.CSharp.Test
         public void shouldNotBeInLibrary()
         {
             Assert.AreEqual("item is not part of the library's collection", library.checkInPaperThing("wrongBook"));
+        }
+        [Test]
+        public void shouldNotBeCheckingOutNewspaper()
+        {
+            Assert.AreEqual("newspapers are not available for loan", library.checkOutPaperThing("testPaper"));
         }
 
     }

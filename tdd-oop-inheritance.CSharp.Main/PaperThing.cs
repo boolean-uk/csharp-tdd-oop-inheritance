@@ -22,7 +22,7 @@ namespace tdd_oop_inheritance.CSharp.Main
             return onLoan;
         }
 
-        public string checkIn()
+        public virtual string checkIn()
         {
             if (!this.isOnLoan())
             {
@@ -34,7 +34,7 @@ namespace tdd_oop_inheritance.CSharp.Main
             return "item has been checked in";
         }
 
-        public string checkOut()
+        public virtual string checkOut()
         {
             if (this.isOnLoan())
             {
