@@ -11,7 +11,7 @@ namespace tdd_oop_inheritance.CSharp.Main
 
         bool onLoan = false;
 
-        public Article(string title) {
+        public Article(string title) : base(title) {
             this.title = title;
         }
         

@@ -12,7 +12,7 @@ namespace tdd_oop_inheritance.CSharp.Main
 
         public static bool onLoan = false;
 
-        public Newspaper(string title) {
+        public Newspaper(string title) : base(title) {
             this.title = title;
         }
 

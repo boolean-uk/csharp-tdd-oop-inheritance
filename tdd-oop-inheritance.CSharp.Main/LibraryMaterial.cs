@@ -12,6 +12,10 @@ namespace tdd_oop_inheritance.CSharp.Main
 
         bool onLoan = false;
 
+        public LibraryMaterial(string title) 
+        { 
+            this.title = title;
+        }
         public bool isOnLoan()
         {
             return onLoan;
