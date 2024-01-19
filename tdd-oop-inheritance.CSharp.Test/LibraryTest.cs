@@ -36,5 +36,13 @@ namespace tdd_oop_inheritance.CSharp.Test
             _library.checkIn("Some article");
             Assert.That(_library.checkIn("Some article"), Is.EqualTo("item is not currently on loan"));
         }
+
+        [Test]
+        public void LibraryCanCheckOut()
+        {
+            _library.addToStock(new Newspaper("The Journal"));
+            _library.checkOut("The Journal");
+            Assert.That(_library.checkOut("The Journal"), Is.EqualTo("newspapers are not available for loan"));
+        }
     }
 }
