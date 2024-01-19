@@ -8,15 +8,17 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldCheckOutIfAvailable()
             {
-                Article article = new Article("JUnit Rocks");
+            Author bob = new Author("Bobby Wills", "Bobby@Wills.com", "BobbyWills.com");
+            Article article = new Article("JUnit Rocks",bob);
                 Assert.AreEqual("item has been checked out", article.checkOut());
             }
 
         [Test]
         public void shouldDeclineIfNotAvailableToCheckout()
             {
-                Article article = new Article("JUnit Rocks");
-                article.checkOut();
+            Author bob = new Author("Bobby Wills", "Bobby@Wills.com", "BobbyWills.com");
+            Article article = new Article("JUnit Rocks", bob);
+            article.checkOut();
 
                 Assert.AreEqual("item is currently on loan", article.checkOut());
             }
@@ -24,8 +26,9 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldCheckInIfOnLoan()
             {
-                Article article = new Article("JUnit Rocks");
-                article.checkOut();
+            Author bob = new Author("Bobby Wills", "Bobby@Wills.com", "BobbyWills.com");
+            Article article = new Article("JUnit Rocks", bob);
+            article.checkOut();
 
                 Assert.AreEqual("item has been checked in", article.checkIn());
             }
@@ -33,9 +36,23 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldDeclineCheckInIfNotOnLoan()
             {
-                Article article = new Article("JUnit Rocks");
+            Author bob = new Author("Bobby Wills", "Bobby@Wills.com", "BobbyWills.com");
+            Article article = new Article("JUnit Rocks", bob);
 
-                Assert.AreEqual("item is not currently on loan", article.checkIn());
+            Assert.AreEqual("item is not currently on loan", article.checkIn());
             }
+        [Test]
+        public void getAuthorInfoFromBook()
+        {
+            Author bob = new Author("Bobby Wills", "Bobby@Wills.com", "BobbyWills.com");
+            Article article = new Article("JUnit Rocks", bob);
+
+
+            Assert.AreEqual(article.getAuthorInfo()[0], "Bobby Wills");
+            Assert.AreEqual(article.getAuthorInfo()[1], "Bobby@Wills.com");
+            Assert.AreEqual(article.getAuthorInfo()[2], "BobbyWills.com");
+
+
+        }
     }
 }
