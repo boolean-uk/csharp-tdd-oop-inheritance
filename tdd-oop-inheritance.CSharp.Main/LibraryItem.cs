@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public abstract class LibraryItem
+    public abstract class LibraryItem : ILibraryItem
     {
-        public string title;
+        public string Title { get; }
 
-        bool onLoan = false;
+        public bool OnLoan { get; set; }
 
         public LibraryItem(string title)
         {
-            this.title = title;
+            Title = title;
         }
 
         public bool isOnLoan()
         {
-            return onLoan;
+            return OnLoan;
         }
 
         virtual public string checkIn()
@@ -29,7 +29,7 @@ namespace tdd_oop_inheritance.CSharp.Main
                 return "item is not currently on loan";
             }
 
-            this.onLoan = false;
+            OnLoan = false;
 
             return "item has been checked in";
         }
@@ -41,7 +41,7 @@ namespace tdd_oop_inheritance.CSharp.Main
                 return "item is currently on loan";
             }
 
-            this.onLoan = true;
+            OnLoan = true;
 
             return "item has been checked out";
         }

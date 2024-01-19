@@ -1,0 +1,32 @@
+﻿using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using tdd_oop_inheritance.CSharp.Main;
+
+namespace tdd_oop_inheritance.CSharp.Test
+{
+    [TestFixture]
+    public class LibraryTest
+    {
+        private Library _library;
+        [SetUp]
+        public void SetUp() 
+        {
+            _library = new Library();
+        }
+
+        [DatapointSource]
+        public ILibraryItem[] LibraryItems = [
+            new Article("How to create test in .NET 101"), new Book("The Lord of the Rings"), new Newspaper("The Telegraph")
+        ];
+
+        [Theory]
+        public void AddToStockTest(ILibraryItem item)
+        {
+            Assert.DoesNotThrow(() => _library.addToStock(item));
+        }
+    }
+}

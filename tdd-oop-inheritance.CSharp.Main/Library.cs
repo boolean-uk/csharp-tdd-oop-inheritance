@@ -10,24 +10,18 @@ namespace tdd_oop_inheritance.CSharp.Main
         List<Article> articles = new List<Article>();
         List<Book> books = new List<Book>();
         List<Newspaper> newspapers = new List<Newspaper>();
+        List<ILibraryItem> libraryItems = [];
 
-        public void addToStock(Article item) {
-            this.articles.Add(item);
-        }
-
-        public void addToStock(Book item) {
-            this.books.Add(item);
-        }
-
-        public void addToStock(Newspaper item) {
-            this.newspapers.Add(item);
+        public void addToStock(ILibraryItem item)
+        {
+            libraryItems.Add(item);
         }
 
         // The following methods may contain code that you are unfamiliar with. The strange syntax of article -> something
         // is called a lambda expression (https://www.w3schools.com/java/java_lambda.asp)
         public string checkInArticle(string title) {
 
-            List<Article> filtered = (List<Article>)this.articles.Where(article => article.title.Equals(title));
+            List<Article> filtered = (List<Article>)this.articles.Where(article => article.Title.Equals(title));
 
             if (filtered.Count() < 1) {
                 return "item is not part of the library's collection";
@@ -37,7 +31,7 @@ namespace tdd_oop_inheritance.CSharp.Main
         }
 
         public string checkOutArticle(string title) {
-            List<Article> filtered = (List<Article>)this.articles.Where(article => article.title.Equals(title));
+            List<Article> filtered = (List<Article>)this.articles.Where(article => article.Title.Equals(title));
 
             if (filtered.Count() < 1) {
                 return "item is not part of the library's collection";
@@ -67,7 +61,7 @@ namespace tdd_oop_inheritance.CSharp.Main
         }
 
         public string checkInNewspaper(string title) {
-            List<Newspaper> filtered = (List<Newspaper>)this.newspapers.Where(newspaper => newspaper.title.Equals(title));
+            List<Newspaper> filtered = (List<Newspaper>)this.newspapers.Where(newspaper => newspaper.Title.Equals(title));
 
             if (filtered.Count() < 1) {
                 return "item is not part of the library's collection";
@@ -77,7 +71,7 @@ namespace tdd_oop_inheritance.CSharp.Main
         }
 
         public string checkOutNewspaper(string title) {
-            List<Newspaper> filtered = (List<Newspaper>)this.newspapers.Where(newspaper => newspaper.title.Equals(title));
+            List<Newspaper> filtered = (List<Newspaper>)this.newspapers.Where(newspaper => newspaper.Title.Equals(title));
 
             if (filtered.Count() < 1) {
                 return "item is not part of the library's collection";
