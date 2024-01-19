@@ -8,11 +8,13 @@ namespace tdd_oop_inheritance.CSharp.Test
 
         Article article;
         Library library;
+        Author author;
 
         [SetUp]
         public void SetUp()
         {
-            article = new("JUnit Rocks");
+            author = new("John", "john@mail.com", "john.com");
+            article = new("JUnit Rocks", author);
             library = new();
             library.addToStock(article);
         }
@@ -41,6 +43,12 @@ namespace tdd_oop_inheritance.CSharp.Test
         public void shouldDeclineCheckInIfNotOnLoan()
         {
             Assert.That(library.checkInItem(article.title), Is.EqualTo("item is not currently on loan"));
+        }
+
+        [Test]
+        public void hasAuthorName() 
+        {
+            Assert.That(library.getAuthor(article.title).name, Is.EqualTo(author.name));
         }
     }
 }

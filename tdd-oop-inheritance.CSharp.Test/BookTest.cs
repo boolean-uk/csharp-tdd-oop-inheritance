@@ -7,11 +7,13 @@ namespace tdd_oop_inheritance.CSharp.Test
     {
         Book book;
         Library library;
+        Author author;
 
         [SetUp]
         public void SetUp()
         {
-            book = new("JUnit Rocks");
+            author = new("John", "john@mail.com", "john.com");
+            book = new("JUnit Rocks", author);
             library = new();
             library.addToStock(book);
         }
@@ -40,6 +42,12 @@ namespace tdd_oop_inheritance.CSharp.Test
         public void shouldDeclineCheckInIfNotOnLoan()
         {
             Assert.That(library.checkInItem(book.title), Is.EqualTo("item is not currently on loan"));
+        }
+
+        [Test]
+        public void hasAuthorName()
+        {
+            Assert.That(library.getAuthor(book.title).name, Is.EqualTo(author.name));
         }
     }
 }
