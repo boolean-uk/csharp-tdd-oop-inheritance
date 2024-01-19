@@ -10,6 +10,8 @@ namespace tdd_oop_inheritance.CSharp.Test
         {
             Book book = new Book("JUnit Rocks");
             Assert.AreEqual("item has been checked out", book.checkOut());
+
+            Assert.IsInstanceOf<LibraryItem>(book);
         }
 
         [Test]
