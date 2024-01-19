@@ -6,12 +6,20 @@ namespace tdd_oop_inheritance.CSharp.Test
     [TestFixture]
     public class LibraryTest
     {
+        private Author _author;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _author = new Author("TestName", "SomeContactInfo", "SomeURl");
+        }
+
         [Test]
         public void TestAddToStock()
         {
             //setup
             Library lib = new();
-            LibraryItem item = new Book("some book");
+            LibraryItem item = new Book("some book", _author);
 
             //execute
             lib.AddToStock(item);
@@ -25,7 +33,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         {
             //setup
             Library lib = new();
-            LibraryItem item = new Book("some book");
+            LibraryItem item = new Book("some book", _author);
             lib.AddToStock(item);
 
             //execute
@@ -44,7 +52,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         {
             //setup
             Library lib = new();
-            LibraryItem item = new Book("some book");
+            LibraryItem item = new Book("some book", _author);
             lib.AddToStock(item);
             lib.CheckOutLibraryItem("some book");
 
