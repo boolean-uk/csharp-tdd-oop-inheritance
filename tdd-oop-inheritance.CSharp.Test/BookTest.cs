@@ -49,5 +49,17 @@ namespace tdd_oop_inheritance.CSharp.Test
         {
             Assert.That(book.Author.name, Is.EqualTo("John"));
         }
+
+        [Test]
+        public void hasAuthorName2() 
+        {
+            Assert.That(library.getAuthor(book.title), Is.EqualTo(author));
+        }
+
+        [Test]
+        public void doesntHaveAuthorName()
+        {
+            Assert.That(library.getAuthor("dsadsa"), Is.EqualTo(null));
+        }
     }
 }

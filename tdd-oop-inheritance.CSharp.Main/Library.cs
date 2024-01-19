@@ -37,5 +37,17 @@ namespace tdd_oop_inheritance.CSharp.Main
 
             return filtered[0].checkOut();
         }
+
+        public Author? getAuthor(string title)
+        {
+            foreach (Item item in this.items)
+            {
+                if(item is IAuthor authoredItem && item.title == title)
+                {
+                    return authoredItem.Author;
+                }
+            }
+            return null;
+        }
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public class Book : Item 
+    public class Book : Item, IAuthor 
     {
-        public Author Author { get; }
+        public Author Author { get; set; }
         public Book(string title, Author author) : base(title)
         {
             Author = author;

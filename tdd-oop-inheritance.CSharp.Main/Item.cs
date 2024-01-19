@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public class Item
+    public class Item 
     {
         public string title;
 
