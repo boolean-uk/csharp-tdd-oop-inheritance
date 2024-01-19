@@ -11,7 +11,7 @@ public class Library {
     // is called a lambda expression (https://www.w3schools.com/java/java_lambda.asp)
     public string checkInProduct(string title) {
 
-        List<Product> filtered = (List<Product>)_products.Where(article => article.title.Equals(title));
+        List<Product> filtered = _products.Where(article => article.title.Equals(title)).ToList();
 
         if (filtered.Count() < 1) {
             return "item is not part of the library's collection";
@@ -21,7 +21,7 @@ public class Library {
     }
 
     public string checkOutProduct(string title) {
-        List<Product> filtered = (List<Product>)_products.Where(article => article.title.Equals(title));
+        List<Product> filtered = _products.Where(article => article.title.Equals(title)).ToList();
 
         if (filtered.Count() < 1) {
             return "item is not part of the library's collection";
