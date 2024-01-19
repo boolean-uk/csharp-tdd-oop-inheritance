@@ -1,5 +1,6 @@
-﻿using tdd_oop_inheritance.CSharp.Main;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using Objects;
+using tdd_oop_inheritance.CSharp.Main;
 
 namespace tdd_oop_inheritance.CSharp.Test
 {
@@ -7,35 +8,43 @@ namespace tdd_oop_inheritance.CSharp.Test
     {
         [Test]
         public void shouldCheckOutIfAvailable()
-            {
-                Article article = new Article("JUnit Rocks");
-                Assert.AreEqual("item has been checked out", article.checkOut());
-            }
+        {
+            Author author = new Author() { Name = "Kanthee", Contact = "I dont know", Website = "Find it" };
+
+            Article article = new Article(author) { Title = "JUnit Rocks" };
+            Assert.AreEqual("item has been checked out", article.checkOut());
+        }
 
         [Test]
         public void shouldDeclineIfNotAvailableToCheckout()
-            {
-                Article article = new Article("JUnit Rocks");
-                article.checkOut();
+        {
+            Author author = new Author() { Name = "Kanthee", Contact = "I dont know", Website = "Find it" };
 
-                Assert.AreEqual("item is currently on loan", article.checkOut());
-            }
+            Article article = new Article(author) { Title = "JUnit Rocks" };
+            article.checkOut();
+
+            Assert.AreEqual("item is currently on loan", article.checkOut());
+        }
 
         [Test]
         public void shouldCheckInIfOnLoan()
-            {
-                Article article = new Article("JUnit Rocks");
-                article.checkOut();
+        {
+            Author author = new Author() { Name = "Kanthee", Contact = "I dont know", Website = "Find it" };
 
-                Assert.AreEqual("item has been checked in", article.checkIn());
-            }
+            Article article = new Article(author) { Title = "JUnit Rocks" };
+            article.checkOut();
+
+            Assert.AreEqual("item has been checked in", article.checkIn());
+        }
 
         [Test]
         public void shouldDeclineCheckInIfNotOnLoan()
-            {
-                Article article = new Article("JUnit Rocks");
+        {
+            Author author = new Author() { Name = "Kanthee", Contact = "I dont know", Website = "Find it" };
 
-                Assert.AreEqual("item is not currently on loan", article.checkIn());
-            }
+            Article article = new Article(author) { Title = "JUnit Rocks" };
+
+            Assert.AreEqual("item is not currently on loan", article.checkIn());
+        }
     }
 }

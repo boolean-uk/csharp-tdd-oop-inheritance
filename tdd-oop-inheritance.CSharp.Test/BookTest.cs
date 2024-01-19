@@ -1,5 +1,6 @@
-﻿using tdd_oop_inheritance.CSharp.Main;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using Objects;
+using tdd_oop_inheritance.CSharp.Main;
 
 namespace tdd_oop_inheritance.CSharp.Test
 {
@@ -8,14 +9,16 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldCheckOutIfAvailable()
         {
-            Book book = new Book("JUnit Rocks");
+            Author author = new Author() { Name = "Kanthee", Contact = "I dont know", Website = "Find it" };
+            Book book = new Book(author) { Title = "JUnit Rocks" };
             Assert.AreEqual("item has been checked out", book.checkOut());
         }
 
         [Test]
         public void shouldDeclineIfNotAvailableToCheckout()
         {
-            Book book = new Book("JUnit Rocks");
+            Author author = new Author() { Name = "Kanthee", Contact = "I dont know", Website = "Find it" };
+            Book book = new Book(author) { Title = "JUnit Rocks" };
             book.checkOut();
 
             Assert.AreEqual("item is currently on loan", book.checkOut());
@@ -24,7 +27,8 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldCheckInIfOnLoan()
         {
-            Book book = new Book("JUnit Rocks");
+            Author author = new Author() { Name = "Kanthee", Contact = "I dont know", Website = "Find it" };
+            Book book = new Book(author) { Title = "JUnit Rocks" };
             book.checkOut();
 
             Assert.AreEqual("item has been checked in", book.checkIn());
@@ -33,7 +37,8 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldDeclineCheckInIfNotOnLoan()
         {
-            Book book = new Book("JUnit Rocks");
+            Author author = new Author() { Name = "Kanthee", Contact = "I dont know", Website = "Find it" };
+            Book book = new Book(author) { Title = "JUnit Rocks" };
 
             Assert.AreEqual("item is not currently on loan", book.checkIn());
         }

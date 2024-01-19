@@ -1,5 +1,5 @@
-﻿using tdd_oop_inheritance.CSharp.Main;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using Objects;
 
 namespace tdd_oop_inheritance.CSharp.Test
 {
@@ -8,14 +8,14 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldBeUnavailableForCheckIn()
         {
-            Newspaper newspaper = new Newspaper("The Daily Java");
+            Newspaper newspaper = new Newspaper() { Title = "The Daily Java" };
             Assert.AreEqual("newspapers are not available for loan", newspaper.checkIn());
         }
 
         [Test]
         public void shouldBeUnavailableForCheckOut()
         {
-            Newspaper newspaper = new Newspaper("The Daily Java");
+            Newspaper newspaper = new Newspaper() { Title = "The Daily Java" };
             Assert.AreEqual("newspapers are not available for loan", newspaper.checkOut());
         }
     }
