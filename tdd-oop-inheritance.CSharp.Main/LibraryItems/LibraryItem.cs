@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace tdd_oop_inheritance.CSharp.Main
+namespace LibraryItems
 {
     public abstract class LibraryItem : ILibraryItem
     {
@@ -24,7 +24,7 @@ namespace tdd_oop_inheritance.CSharp.Main
 
         virtual public string checkIn()
         {
-            if (!this.isOnLoan())
+            if (!isOnLoan())
             {
                 return "item is not currently on loan";
             }
@@ -36,7 +36,7 @@ namespace tdd_oop_inheritance.CSharp.Main
 
         virtual public string checkOut()
         {
-            if (this.isOnLoan())
+            if (isOnLoan())
             {
                 return "item is currently on loan";
             }

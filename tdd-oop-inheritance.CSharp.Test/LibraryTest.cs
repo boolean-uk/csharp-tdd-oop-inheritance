@@ -1,9 +1,5 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LibraryItems;
+using NUnit.Framework;
 using tdd_oop_inheritance.CSharp.Main;
 
 namespace tdd_oop_inheritance.CSharp.Test
@@ -11,16 +7,23 @@ namespace tdd_oop_inheritance.CSharp.Test
     [TestFixture]
     public class LibraryTest
     {
+#pragma warning disable CS8618
         private Library _library;
         [SetUp]
-        public void SetUp() 
+        public void SetUp()
         {
             _library = new Library();
         }
 
+        private static List<Author> _authors = [
+            new Author("J. K. Rowling", "9999999", "SomeWebsite.com"),
+            new Author("Tolkien", "1251251", "AnotherSite.com")];
+
         [DatapointSource]
         public ILibraryItem[] LibraryItems = [
-            new Article("How to create test in .NET 101"), new Book("The Lord of the Rings"), new Newspaper("The Telegraph")
+            new Article("How to create test in .NET 101", _authors[0]),
+            new Book("The Lord of the Rings", _authors[1]),
+            new Newspaper("The Telegraph")
         ];
 
         [Theory]
@@ -32,7 +35,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void LibraryCanCheckIn()
         {
-            _library.addToStock(new Article("Some article"));
+            _library.addToStock(new Article("Some article", _authors[0]));
             _library.checkIn("Some article");
             Assert.That(_library.checkIn("Some article"), Is.EqualTo("item is not currently on loan"));
         }

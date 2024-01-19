@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LibraryItems;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
     public class Library {
-        List<Article> articles = new List<Article>();
-        List<Book> books = new List<Book>();
-        List<Newspaper> newspapers = new List<Newspaper>();
         List<ILibraryItem> libraryItems = [];
 
         public void addToStock(ILibraryItem item)
