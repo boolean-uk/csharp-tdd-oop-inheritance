@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestPlatform.ObjectModel.Engine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,83 +8,80 @@ using System.Threading.Tasks;
 namespace tdd_oop_inheritance.CSharp.Main
 {
     public class Library {
-        List<Article> articles = new List<Article>();
-        List<Book> books = new List<Book>();
-        List<Newspaper> newspapers = new List<Newspaper>();
+        List<Literature> _literatures;
+        List<Literature> filtered;
 
-        public void addToStock(Article item) {
-            this.articles.Add(item);
+        public Library()
+        {
+            _literatures = new List<Literature>();
         }
 
-        public void addToStock(Book item) {
-            this.books.Add(item);
+        public List<Literature> literature { get { return _literatures; } }
+
+        public string addToStock(Literature item) 
+        {
+            if (_literatures.Contains(item))
+            {
+                return new string($"{item.title} has already been added to the collection in your library");
+            }
+            else
+            {
+                this._literatures.Add(item);
+                return new string($"{item.title} was added to the collection!");
+            }
         }
 
-        public void addToStock(Newspaper item) {
-            this.newspapers.Add(item);
-        }
-
-        // The following methods may contain code that you are unfamiliar with. The strange syntax of article -> something
-        // is called a lambda expression (https://www.w3schools.com/java/java_lambda.asp)
-        public string checkInArticle(string title) {
-
-            List<Article> filtered = (List<Article>)this.articles.Where(article => article.title.Equals(title));
-
-            if (filtered.Count() < 1) {
-                return "item is not part of the library's collection";
+        public string checkInLiterature(string title)
+        {
+            if(!IsInLibraryCollection(title)) 
+            {
+                return "item is not in the library collection";
             }
 
             return filtered[0].checkIn();
         }
-
-        public string checkOutArticle(string title) {
-            List<Article> filtered = (List<Article>)this.articles.Where(article => article.title.Equals(title));
-
-            if (filtered.Count() < 1) {
+        public string checkOutLiterature(string title)
+        {
+            if (!IsInLibraryCollection(title))
+            {
                 return "item is not part of the library's collection";
+            }
+
+            filtered = new List<Literature>(); // Initialize filtered list
+
+            foreach (Literature item in this._literatures)
+            {
+                if (item.title.Equals(title))
+                {
+                    filtered.Add(item);
+                }
+            }
+
+            // Ensure filtered is not empty
+            if (filtered.Count == 0)
+            {
+                return "error during check-out: filtered list is empty";
             }
 
             return filtered[0].checkOut();
         }
 
-        public string checkInBook(string title) {
-            List<Book> filtered = (List<Book>)this.books.Where(book => book.Equals(title));
 
-            if (filtered.Count() < 1) {
-                return "item is not part of the library's collection";
+
+        private bool IsInLibraryCollection(string title)
+        {
+            filtered = new List<Literature>();
+
+            foreach (Literature item in this._literatures)
+            {
+                if (item.title.Equals(title))
+                {
+                    filtered.Add(item);
+                }
             }
 
-            return filtered[0].checkIn();
+            return filtered.Count > 0;
         }
 
-        public string checkOutBook(string title) {
-            List<Book> filtered = (List<Book>)this.books.Where(book => book.Equals(title));
-
-            if (filtered.Count() < 1) {
-                return "item is not part of the library's collection";
-            }
-
-            return filtered[0].checkOut();
-        }
-
-        public string checkInNewspaper(string title) {
-            List<Newspaper> filtered = (List<Newspaper>)this.newspapers.Where(newspaper => newspaper.title.Equals(title));
-
-            if (filtered.Count() < 1) {
-                return "item is not part of the library's collection";
-            }
-
-            return filtered[0].checkIn();
-        }
-
-        public string checkOutNewspaper(string title) {
-            List<Newspaper> filtered = (List<Newspaper>)this.newspapers.Where(newspaper => newspaper.title.Equals(title));
-
-            if (filtered.Count() < 1) {
-                return "item is not part of the library's collection";
-            }
-
-            return filtered[0].checkOut();
-        }
     }
 }
