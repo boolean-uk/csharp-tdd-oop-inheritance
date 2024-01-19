@@ -10,6 +10,8 @@ namespace tdd_oop_inheritance.CSharp.Test
         {
             Newspaper newspaper = new Newspaper("The Daily Java");
             Assert.AreEqual("newspapers are not available for loan", newspaper.checkIn());
+
+            Assert.IsInstanceOf<LibraryItem>(newspaper);
         }
 
         [Test]
