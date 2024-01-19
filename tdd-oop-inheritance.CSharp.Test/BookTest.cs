@@ -5,37 +5,61 @@ namespace tdd_oop_inheritance.CSharp.Test
 {
     public class BookTest
     {
+        Book book;
+        Library library;
+        Author author;
+
+        [SetUp]
+        public void SetUp()
+        {
+            author = new("John", "john@mail.com", "john.com");
+            book = new("JUnit Rocks", author);
+            library = new();
+            library.addToStock(book);
+        }
+
         [Test]
         public void shouldCheckOutIfAvailable()
         {
-            Book book = new Book("JUnit Rocks");
-            Assert.AreEqual("item has been checked out", book.checkOut());
+            Assert.That(library.checkOutItem(book.title), Is.EqualTo("item has been checked out"));
         }
 
         [Test]
         public void shouldDeclineIfNotAvailableToCheckout()
         {
-            Book book = new Book("JUnit Rocks");
-            book.checkOut();
-
-            Assert.AreEqual("item is currently on loan", book.checkOut());
+            library.checkOutItem(book.title);
+            Assert.That(library.checkOutItem(book.title), Is.EqualTo("item is currently on loan"));
         }
 
         [Test]
         public void shouldCheckInIfOnLoan()
         {
-            Book book = new Book("JUnit Rocks");
-            book.checkOut();
-
-            Assert.AreEqual("item has been checked in", book.checkIn());
+            library.checkOutItem(book.title);
+            Assert.That(library.checkInItem(book.title), Is.EqualTo("item has been checked in"));
         }
 
         [Test]
         public void shouldDeclineCheckInIfNotOnLoan()
         {
-            Book book = new Book("JUnit Rocks");
+            Assert.That(library.checkInItem(book.title), Is.EqualTo("item is not currently on loan"));
+        }
 
-            Assert.AreEqual("item is not currently on loan", book.checkIn());
+        [Test]
+        public void hasAuthorName()
+        {
+            Assert.That(book.Author.name, Is.EqualTo("John"));
+        }
+
+        [Test]
+        public void hasAuthorName2() 
+        {
+            Assert.That(library.getAuthor(book.title), Is.EqualTo(author));
+        }
+
+        [Test]
+        public void doesntHaveAuthorName()
+        {
+            Assert.That(library.getAuthor("dsadsa"), Is.EqualTo(null));
         }
     }
 }
