@@ -1,13 +1,15 @@
-﻿namespace tdd_oop_inheritance.CSharp.Main;
+﻿using tdd_oop_inheritance.CSharp.Main.Interfaces;
 
-public class Book : Product
+namespace tdd_oop_inheritance.CSharp.Main;
+
+public class Book : Product, IAuthorable
 {
-    private Author _author;
+    private IAuthor _author;
 
-    public Book(string title, Author author) : base(title)
+    public Book(string title, IAuthor author) : base(title)
     {
         _author = author;
     }
 
-    public Author Author { get { return _author; } }
+    public IAuthor Author { get { return _author; } set { _author = value; } }
 }
