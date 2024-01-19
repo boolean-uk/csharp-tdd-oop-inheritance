@@ -15,8 +15,10 @@ namespace tdd_oop_inheritance.CSharp.Test
         public void SetUp() 
         {
             library = new Library();
-            library.addToStock(new Article("JUnit Rocks"));
-            library.addToStock(new Book("Hitchiker's guide to the galaxy"));
+            Author author = new Author("Andrew Jegman", "andrew@nocontact.com", "jegman.com");
+            Author dAdams = new Author("Douglas Adams", "idont@know.com", "https://www.bbc.co.uk/programmes/articles/1g84m0sXpnNCv84GpN2PLZG/the-game-30th-anniversary-edition");
+            library.addToStock(new Article("JUnit Rocks", author));
+            library.addToStock(new Book("Hitchiker's guide to the galaxy", dAdams));
             library.addToStock(new Newspaper("New York Times"));
         }
 
@@ -57,6 +59,20 @@ namespace tdd_oop_inheritance.CSharp.Test
         public void shouldBeUnavailableForCheckOut()
         {
             Assert.That(library.checkOut("New York Times"), Is.EqualTo("newspapers are not available for loan"));
+        }
+
+        [Test]
+        public void shouldNotHaveAuthor()
+        {
+            Assert.That(library.getAuthor("New York Times"), Is.EqualTo("item does not have a single author"));
+        }
+
+        [Test]
+        [TestCase("Hitchiker's guide to the galaxy", "Douglas Adams")]
+        [TestCase("JUnit Rocks", "Andrew Jegman")]
+        public void shouldHaveAuthor(string item, string author)
+        {
+            Assert.That(library.getAuthor(item), Is.EqualTo(author));
         }
     }
 }

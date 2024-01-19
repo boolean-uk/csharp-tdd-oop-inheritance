@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public class Book : LibraryItem
+    public class Book : LibraryItem, IAuthorable
     {
-        public Book(string title) :base(title) { }
+        IAuthor _author;
+        public Book(string title, IAuthor author = null) :base(title) 
+        {
+            this._author = author;
+        }
+
+        public IAuthor Author { get { return _author; } set { _author = value; } }
+
     }
 }

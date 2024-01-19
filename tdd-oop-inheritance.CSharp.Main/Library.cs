@@ -43,5 +43,19 @@ namespace tdd_oop_inheritance.CSharp.Main
         }
         // The following methods may contain code that you are unfamiliar with. The strange syntax of article -> something
         // is called a lambda expression (https://www.w3schools.com/java/java_lambda.asp)
+
+        public string getAuthor(string title)
+        {
+            List<LibraryItem> filtered = this.items.Where(article => article.title.Equals(title)).ToList();
+            if (filtered.Count() < 1)
+            {
+                return "item is not part of the library's collection";
+            }
+            if (filtered[0] is IAuthorable)
+            {
+                return (filtered[0] as IAuthorable).Author.name;
+            }
+            return "item does not have a single author";
+        }
     }
 }
