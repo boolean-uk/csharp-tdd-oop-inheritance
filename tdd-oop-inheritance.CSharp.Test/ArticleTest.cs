@@ -37,5 +37,16 @@ namespace tdd_oop_inheritance.CSharp.Test
 
                 Assert.AreEqual("item is not currently on loan", article.checkIn());
             }
+
+        [Test]
+        public void AuthorArticleTest()
+        {
+            List<Literature> testList = new List<Literature>();
+            Book article1 = new Book("A Song of Ice and Fire");
+            article1.SetAuthor("George R. R. Martin", "12345678", "neverfinishingthatbook.com");
+            Assert.That(article1.GetAuthor()._name.Equals("George R. R. Martin"));
+            Assert.That(article1.GetAuthor()._number.Equals("12345678"));
+            Assert.That(article1.GetAuthor()._website.Equals("neverfinishingthatbook.com"));
+        }
     }
 }
