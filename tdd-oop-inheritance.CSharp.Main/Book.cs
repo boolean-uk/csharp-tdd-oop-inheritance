@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public class Book : Item
+    public class Book(string title, Author author) : Item(title)
     {
-        private Author _author;
-        public Book(string title, Author author) : base(title)
-        {
-            _author = author;
-        }
-        public Author Author { get => _author; }
+        public Author Author { get; } = author;
     }
 }

@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public class Newspaper : Item
+    public class Newspaper(string title) : Item(title)
     {
-        public Newspaper(string title) : base(title) 
-        { 
-        }
-
         public override string checkIn() {
             return "newspapers are not available for loan";
         }

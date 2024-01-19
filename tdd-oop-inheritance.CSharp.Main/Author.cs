@@ -6,19 +6,17 @@ using System.Threading.Tasks;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public class Author
+    public class Author 
     {
-        private string _name;
-        private string _info;
-        private string _url;
+        public string Name { get; set; }
+        public string ContactInfo { get; set; }
+        public string Website { get; set; }
+
         public Author(string name, string contactInfo, string website) 
         {
-            _name = name;
-            _info = contactInfo;
-            _url = website;
+            Name = name;
+            ContactInfo = contactInfo;
+            Website = website;
         }
-        public string Name { get => _name; }
-        public string ContactInfo { get => _info; }
-        public string Website { get => _url; }
     }
 }
