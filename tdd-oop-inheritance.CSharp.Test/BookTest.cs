@@ -8,34 +8,42 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldCheckOutIfAvailable()
         {
-            Book book = new Book("JUnit Rocks");
-            Assert.AreEqual("item has been checked out", book.checkOut());
+            var author = new Author("Famous Author", "Contact Info", "Author's Website");
+
+            Book book = new Book("JUnit Rocks", author);
+            Assert.AreEqual("Item has been checked out", book.checkOut());
         }
 
         [Test]
         public void shouldDeclineIfNotAvailableToCheckout()
         {
-            Book book = new Book("JUnit Rocks");
+            var author = new Author("Famous Author", "Contact Info", "Author's Website");
+
+            Book book = new Book("JUnit Rocks", author);
             book.checkOut();
 
-            Assert.AreEqual("item is currently on loan", book.checkOut());
+            Assert.AreEqual("Item is currently on loan", book.checkOut());
         }
 
         [Test]
         public void shouldCheckInIfOnLoan()
         {
-            Book book = new Book("JUnit Rocks");
+            var author = new Author("Famous Author", "Contact Info", "Author's Website");
+
+            Book book = new Book("JUnit Rocks", author);
             book.checkOut();
 
-            Assert.AreEqual("item has been checked in", book.checkIn());
+            Assert.AreEqual("Item has been checked in", book.checkIn());
         }
 
         [Test]
         public void shouldDeclineCheckInIfNotOnLoan()
         {
-            Book book = new Book("JUnit Rocks");
+            var author = new Author("Famous Author", "Contact Info", "Author's Website");
 
-            Assert.AreEqual("item is not currently on loan", book.checkIn());
+            Book book = new Book("JUnit Rocks", author);
+
+            Assert.AreEqual("Item is not currently on loan", book.checkIn());
         }
     }
 }
