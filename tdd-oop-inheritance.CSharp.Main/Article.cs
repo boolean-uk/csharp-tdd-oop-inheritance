@@ -2,7 +2,12 @@
 
 public class Article : Product
 {
-    public Article(string title) : base(title)
+    private Author _author;
+
+    public Article(string title, Author author) : base(title)
     {
+        _author = author;
     }
+
+    public Author Author { get { return _author; } }
 }

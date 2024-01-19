@@ -8,8 +8,9 @@ public class LibraryTests
     [Test]
     public void shouldCheckOutIfAvailable()
     {
+        Author author = new Author("Guy", "Guy@gmail.com", "https://www.guy.com");
         Library library = new Library();
-        Book book = new Book("JUnit Rocks");
+        Book book = new Book("JUnit Rocks", author);
         library.addToStock(book);
 
         Assert.AreEqual("item has been checked out", library.checkOutProduct("JUnit Rocks"));
@@ -18,8 +19,9 @@ public class LibraryTests
     [Test]
     public void shouldDeclineIfNotAvailableToCheckout()
     {
+        Author author = new Author("Guy", "Guy@gmail.com", "https://www.guy.com");
         Library library = new Library();
-        Book book = new Book("JUnit Rocks");
+        Book book = new Book("JUnit Rocks", author);
         library.addToStock(book);
         library.checkOutProduct("JUnit Rocks");
 
@@ -29,8 +31,9 @@ public class LibraryTests
     [Test]
     public void shouldCheckInIfOnLoan()
     {
+        Author author = new Author("Guy", "Guy@gmail.com", "https://www.guy.com");
         Library library = new Library();
-        Book book = new Book("JUnit Rocks");
+        Book book = new Book("JUnit Rocks", author);
         library.addToStock(book);
         library.checkOutProduct("JUnit Rocks");
 
@@ -40,8 +43,9 @@ public class LibraryTests
     [Test]
     public void shouldDeclineCheckInIfNotOnLoan()
     {
+        Author author = new Author("Guy", "Guy@gmail.com", "https://www.guy.com");
         Library library = new Library();
-        Book book = new Book("JUnit Rocks");
+        Book book = new Book("JUnit Rocks", author);
         library.addToStock(book);
 
         Assert.AreEqual("item is not currently on loan", library.checkInProduct("JUnit Rocks"));
