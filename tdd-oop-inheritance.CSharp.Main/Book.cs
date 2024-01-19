@@ -1,42 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using tdd_oop_inheritance.CSharp.Main.Interfaces;
 
-namespace tdd_oop_inheritance.CSharp.Main
+namespace tdd_oop_inheritance.CSharp.Main;
+
+public class Book : Product, IAuthorable
 {
-    public class Book {
-        public string title;
+    private IAuthor _author;
 
-        bool onLoan = false;
-
-        public Book(string title) {
-            this.title = title;
-        }
-
-        public bool isOnLoan() {
-            return onLoan;
-        }
-
-        public string checkIn() {
-            if (!this.isOnLoan()) {
-                return "item is not currently on loan";
-            }
-
-            this.onLoan = false;
-
-            return "item has been checked in";
-        }
-
-        public string checkOut() {
-            if (this.isOnLoan()) {
-                return "item is currently on loan";
-            }
-
-            this.onLoan = true;
-
-            return "item has been checked out";
-        }
+    public Book(string title, IAuthor author) : base(title)
+    {
+        _author = author;
     }
+
+    public IAuthor Author { get { return _author; } set { _author = value; } }
 }
