@@ -8,14 +8,16 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldBeUnavailableForCheckIn()
         {
-            Newspaper newspaper = new Newspaper("The Daily Java");
+            Author author = new Author("John Doe", "john@example.com", "www.johndoe.com");
+            Newspaper newspaper = new Newspaper("The Daily Java", author);
             Assert.AreEqual("newspapers are not available for loan", newspaper.checkIn());
         }
 
         [Test]
         public void shouldBeUnavailableForCheckOut()
         {
-            Newspaper newspaper = new Newspaper("The Daily Java");
+            Author author = new Author("John Doe", "john@example.com", "www.johndoe.com");
+            Newspaper newspaper = new Newspaper("The Daily Java", author);
             Assert.AreEqual("newspapers are not available for loan", newspaper.checkOut());
         }
     }
