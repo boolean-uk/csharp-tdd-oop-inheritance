@@ -9,6 +9,6 @@ namespace LibraryItems
 {
     public class Book : LoanItem
     {
-        public Book(string title) : base(title) { }
+        public Book(string title, Author author) : base(title, author) { }
     }
 }

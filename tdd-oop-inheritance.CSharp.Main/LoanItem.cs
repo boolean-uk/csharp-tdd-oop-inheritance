@@ -10,11 +10,21 @@ namespace tdd_oop_inheritance.CSharp.Main
     {
         public string title { get; set; }
         public bool onLoan { get; set; }
+        public Author Author { get; set; }
 
+        // Constructor for items with an author
+        public LoanItem(string title, Author author)
+        {
+            this.title = title;
+            this.onLoan = false;
+            this.Author = author;
+        }
+
+        // Overloaded constructor for items without an author (like Newspapers)
         public LoanItem(string title)
         {
             this.title = title;
-            onLoan = false;
+            this.onLoan = false;
         }
 
         public virtual bool isOnLoan()
