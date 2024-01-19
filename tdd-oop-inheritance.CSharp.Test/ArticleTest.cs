@@ -26,7 +26,6 @@ namespace tdd_oop_inheritance.CSharp.Test
             {
                 Article article = new Article("JUnit Rocks");
                 article.checkOut();
-
                 Assert.AreEqual("item has been checked in", article.checkIn());
             }
 
@@ -37,5 +36,20 @@ namespace tdd_oop_inheritance.CSharp.Test
 
                 Assert.AreEqual("item is not currently on loan", article.checkIn());
             }
+        [Test]
+        public void shouldHaveAnAuthor()
+        {
+            Author author = new Author("Nigel", "44449999", "nigel@yahoo.com", "nigel.no");
+            Article article = new Article("JUnit Rocks", author);
+
+            Assert.That(article.hasAuthor, Is.True);
+        }
+        [Test]
+        public void shouldNotHaveAnAuthor()
+        {
+            Article article = new Article("JUnit Rocks");
+
+            Assert.That(article.hasAuthor, Is.False);
+        }
     }
 }

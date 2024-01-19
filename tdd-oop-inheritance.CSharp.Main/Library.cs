@@ -8,10 +8,6 @@ namespace tdd_oop_inheritance.CSharp.Main
 {
     public class Library {
         List<Readable> readables = new List<Readable>();
-        List<Article> articles = new List<Article>();
-        List<Book> books = new List<Book>();
-        List<Newspaper> newspapers = new List<Newspaper>();
-
         public void addToStock(Readable item) {
             this.readables.Add(item);
         }

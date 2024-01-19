@@ -8,10 +8,19 @@ namespace tdd_oop_inheritance.CSharp.Main
 {
     public class Article : Readable {
 
-        public Article(string title) : base(title) {
+        private Author author;
+        public bool hasAuthor;
+        public Article(string title, Author atuhor = null) : base(title) {
             onLoan = false;
+            this.author = atuhor;
+            if (author != null)
+            {
+                hasAuthor = true;    
+            }
         }
-        
+
+        public Author Author { get { return author; } }
+
         public override bool isOnLoan()  {
             return onLoan;
         }
@@ -31,5 +40,7 @@ namespace tdd_oop_inheritance.CSharp.Main
             this.onLoan = true;
             return "item has been checked out";
         }
+
+
     }
 }
