@@ -28,5 +28,13 @@ namespace tdd_oop_inheritance.CSharp.Test
         {
             Assert.DoesNotThrow(() => _library.addToStock(item));
         }
+
+        [Test]
+        public void LibraryCanCheckIn()
+        {
+            _library.addToStock(new Article("Some article"));
+            _library.checkIn("Some article");
+            Assert.That(_library.checkIn("Some article"), Is.EqualTo("item is not currently on loan"));
+        }
     }
 }

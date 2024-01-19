@@ -11,5 +11,7 @@ namespace tdd_oop_inheritance.CSharp.Main
         public string Title { get; }
 
         public bool OnLoan { get; set; }
+        public string checkIn();
+        public string checkOut();
     }
 }
