@@ -5,37 +5,42 @@ namespace tdd_oop_inheritance.CSharp.Test
 {
     class ArticleTest
     {
+
+        Article article;
+        Library library;
+
+        [SetUp]
+        public void SetUp()
+        {
+            article = new("JUnit Rocks");
+            library = new();
+            library.addToStock(article);
+        }
+
         [Test]
         public void shouldCheckOutIfAvailable()
-            {
-                Article article = new Article("JUnit Rocks");
-                Assert.AreEqual("item has been checked out", article.checkOut());
-            }
+        {
+            Assert.That(library.checkOutItem(article.title), Is.EqualTo("item has been checked out"));
+        }
 
         [Test]
         public void shouldDeclineIfNotAvailableToCheckout()
-            {
-                Article article = new Article("JUnit Rocks");
-                article.checkOut();
-
-                Assert.AreEqual("item is currently on loan", article.checkOut());
-            }
+        {
+            library.checkOutItem(article.title);
+            Assert.That(library.checkOutItem(article.title), Is.EqualTo("item is currently on loan"));
+        }
 
         [Test]
         public void shouldCheckInIfOnLoan()
-            {
-                Article article = new Article("JUnit Rocks");
-                article.checkOut();
-
-                Assert.AreEqual("item has been checked in", article.checkIn());
-            }
+        {
+            library.checkOutItem(article.title);
+            Assert.That(library.checkInItem(article.title), Is.EqualTo("item has been checked in"));
+        }
 
         [Test]
         public void shouldDeclineCheckInIfNotOnLoan()
-            {
-                Article article = new Article("JUnit Rocks");
-
-                Assert.AreEqual("item is not currently on loan", article.checkIn());
-            }
+        {
+            Assert.That(library.checkInItem(article.title), Is.EqualTo("item is not currently on loan"));
+        }
     }
 }
