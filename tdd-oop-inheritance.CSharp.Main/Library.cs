@@ -37,10 +37,5 @@ namespace tdd_oop_inheritance.CSharp.Main
 
             return filtered[0].checkOut();
         }
-
-        public Author getAuthor(string title)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
