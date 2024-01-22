@@ -7,83 +7,55 @@ using System.Threading.Tasks;
 namespace tdd_oop_inheritance.CSharp.Main
 {
     public class Library {
-        List<Article> articles = new List<Article>();
-        List<Book> books = new List<Book>();
-        List<Newspaper> newspapers = new List<Newspaper>();
+        private List<PrintMedia> libraryItems;
 
-        public void addToStock(Article item) {
-            this.articles.Add(item);
+        public Library()
+        {
+            this.libraryItems = new List<PrintMedia>();
         }
 
-        public void addToStock(Book item) {
-            this.books.Add(item);
+        public void AddToStock(PrintMedia item) {
+            this.libraryItems.Add(item);
         }
 
-        public void addToStock(Newspaper item) {
-            this.newspapers.Add(item);
+        public string CheckInItem(string title)
+        {
+            if (!IsLibraryItem(title)) return "item is not part of the library's collection";
+            else if (!IsLoanable(title)) return "item is not loanable";
+            List<LoanablePrintMedia> filtered = LoanableItems(libraryItems).Where(item => item.Title.Equals(title)).ToList();
+            return filtered[0].CheckIn();
         }
 
-        // The following methods may contain code that you are unfamiliar with. The strange syntax of article -> something
-        // is called a lambda expression (https://www.w3schools.com/java/java_lambda.asp)
-        public string checkInArticle(string title) {
+        public string CheckOutItem(string title)
+        {
+            if (!IsLibraryItem(title)) return "item is not part of the library's collection";
+            else if (!IsLoanable(title)) return "item is not loanable";
+            List<LoanablePrintMedia> filtered = LoanableItems(libraryItems).Where(item => item.Title.Equals(title)).ToList();
+            return filtered[0].CheckOut();
+        }
 
-            List<Article> filtered = (List<Article>)this.articles.Where(article => article.title.Equals(title));
-
-            if (filtered.Count() < 1) {
-                return "item is not part of the library's collection";
+        public bool IsLoanable(string title)
+        {
+            foreach (PrintMedia item in libraryItems)
+            {
+                if (item.Title == title) return item is LoanablePrintMedia;
             }
-
-            return filtered[0].checkIn();
+            return false;
         }
 
-        public string checkOutArticle(string title) {
-            List<Article> filtered = (List<Article>)this.articles.Where(article => article.title.Equals(title));
-
-            if (filtered.Count() < 1) {
-                return "item is not part of the library's collection";
-            }
-
-            return filtered[0].checkOut();
+        public bool IsLibraryItem(string title)
+        {
+            return this.libraryItems.Select(item => item.Title).ToList().Contains(title);
         }
 
-        public string checkInBook(string title) {
-            List<Book> filtered = (List<Book>)this.books.Where(book => book.Equals(title));
-
-            if (filtered.Count() < 1) {
-                return "item is not part of the library's collection";
+        public List<LoanablePrintMedia> LoanableItems(List<PrintMedia> libraryItems)
+        {
+            List<LoanablePrintMedia> loanableItems = new List<LoanablePrintMedia>();
+            foreach (PrintMedia printMedia in libraryItems)
+            {
+                if (printMedia is LoanablePrintMedia) loanableItems.Add((LoanablePrintMedia)printMedia);
             }
-
-            return filtered[0].checkIn();
-        }
-
-        public string checkOutBook(string title) {
-            List<Book> filtered = (List<Book>)this.books.Where(book => book.Equals(title));
-
-            if (filtered.Count() < 1) {
-                return "item is not part of the library's collection";
-            }
-
-            return filtered[0].checkOut();
-        }
-
-        public string checkInNewspaper(string title) {
-            List<Newspaper> filtered = (List<Newspaper>)this.newspapers.Where(newspaper => newspaper.title.Equals(title));
-
-            if (filtered.Count() < 1) {
-                return "item is not part of the library's collection";
-            }
-
-            return filtered[0].checkIn();
-        }
-
-        public string checkOutNewspaper(string title) {
-            List<Newspaper> filtered = (List<Newspaper>)this.newspapers.Where(newspaper => newspaper.title.Equals(title));
-
-            if (filtered.Count() < 1) {
-                return "item is not part of the library's collection";
-            }
-
-            return filtered[0].checkOut();
+            return loanableItems;
         }
     }
 }

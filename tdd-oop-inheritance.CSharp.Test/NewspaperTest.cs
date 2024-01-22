@@ -1,5 +1,6 @@
 ﻿using tdd_oop_inheritance.CSharp.Main;
 using NUnit.Framework;
+using System.Reflection;
 
 namespace tdd_oop_inheritance.CSharp.Test
 {
@@ -8,15 +9,17 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldBeUnavailableForCheckIn()
         {
-            Newspaper newspaper = new Newspaper("The Daily Java");
-            Assert.AreEqual("newspapers are not available for loan", newspaper.checkIn());
+            Type newspaperType = typeof(Newspaper);
+            MethodInfo? checkInMethod = newspaperType.GetMethod("CheckIn");
+            Assert.IsNull(checkInMethod);
         }
 
         [Test]
         public void shouldBeUnavailableForCheckOut()
         {
-            Newspaper newspaper = new Newspaper("The Daily Java");
-            Assert.AreEqual("newspapers are not available for loan", newspaper.checkOut());
+            Type newspaperType = typeof(Newspaper);
+            MethodInfo? checkInMethod = newspaperType.GetMethod("CheckOut");
+            Assert.IsNull(checkInMethod);
         }
     }
 }
