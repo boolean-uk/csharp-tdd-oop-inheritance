@@ -6,25 +6,22 @@ using System.Threading.Tasks;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public class Newspaper
+    public class Newspaper : Text
     {
-        public string title;
 
-        Boolean onLoan = false;
-
-        public Newspaper(string title) {
-            this.title = title;
+        public Newspaper(string title) : base(title) {
+            onLoan = false;
         }
 
-        public bool isOnLoan() {
+        public override bool isOnLoan() {
             return onLoan;
         }
 
-        public string checkIn() {
+        public override string checkIn() {
             return "newspapers are not available for loan";
         }
 
-        public string checkOut() {
+        public override string checkOut() {
             return "newspapers are not available for loan";
         }
     }
