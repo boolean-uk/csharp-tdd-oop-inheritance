@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public class Book {
+    // Book class inheriting from LibraryItem
+    public class Book : LibraryItem 
+    {
+
+        // Constructor calling the base class constructor
+        //Updated: Author property from LibraryItem
+        public Book(string title, Author author) : base(title, author) { }
+
+
+        //Old code, no longer needed as we have a common base class (LibraryItem)
+        /*
         public string title;
 
         bool onLoan = false;
@@ -38,5 +48,6 @@ namespace tdd_oop_inheritance.CSharp.Main
 
             return "item has been checked out";
         }
+        */
     }
 }

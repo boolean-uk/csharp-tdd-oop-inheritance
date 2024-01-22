@@ -5,6 +5,7 @@ namespace tdd_oop_inheritance.CSharp.Test
 {
     public class NewspaperTest
     {
+        
         [Test]
         public void shouldBeUnavailableForCheckIn()
         {
@@ -18,5 +19,6 @@ namespace tdd_oop_inheritance.CSharp.Test
             Newspaper newspaper = new Newspaper("The Daily Java");
             Assert.AreEqual("newspapers are not available for loan", newspaper.checkOut());
         }
+        
     }
 }
