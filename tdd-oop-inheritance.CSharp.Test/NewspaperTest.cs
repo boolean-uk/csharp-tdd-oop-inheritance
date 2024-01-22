@@ -18,5 +18,15 @@ namespace tdd_oop_inheritance.CSharp.Test
             Newspaper newspaper = new Newspaper("The Daily Java");
             Assert.AreEqual("newspapers are not available for loan", newspaper.checkOut());
         }
+
+        [Test]
+        public void GetAuthorName_Newspaper()
+        {
+            Newspaper newspaper = new Newspaper("Duckburg Times");
+
+            string expectedResult = newspaper.getAuthorName();
+            string actualResult = "This newspaper has no author, or multiple.";
+            Assert.That(expectedResult, Is.EqualTo(actualResult));
+        }
     }
 }
