@@ -3,40 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public class Book {
-        public string title;
-
-        bool onLoan = false;
-
-        public Book(string title) {
+    public class Book : LibraryItem
+    {
+        public Author author; 
+        public Book(string title, Author author) : base(title)
+        {
             this.title = title;
+            this.author = author;
         }
 
-        public bool isOnLoan() {
-            return onLoan;
-        }
-
-        public string checkIn() {
-            if (!this.isOnLoan()) {
-                return "item is not currently on loan";
-            }
-
-            this.onLoan = false;
-
-            return "item has been checked in";
-        }
-
-        public string checkOut() {
-            if (this.isOnLoan()) {
-                return "item is currently on loan";
-            }
-
-            this.onLoan = true;
-
-            return "item has been checked out";
+        public override string ToString()
+        {
+            return $"{this.title} {this.author.name} {this.author.contactInformation} {this.author.website}";
         }
     }
 }
