@@ -9,6 +9,6 @@ namespace tdd_oop_inheritance.CSharp.Main
     public class Article : LoanablePrintMedia {
 
         public Article(string title) : base(title) { }
-       
+
     }
 }

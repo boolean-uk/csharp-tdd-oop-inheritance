@@ -37,5 +37,13 @@ namespace tdd_oop_inheritance.CSharp.Test
 
             Assert.AreEqual("item is not currently on loan", book.CheckIn());
         }
+
+        [Test]
+        public void authorTest()
+        {
+            Book book = new Book("JUnit Rocks");
+            book.Author = new Author("Jauffre Javason", "jauffre@ilovejava.com", "java.com");
+            Assert.That(book.Author.Name.Contains("Jauffre"));
+        }
     }
 }

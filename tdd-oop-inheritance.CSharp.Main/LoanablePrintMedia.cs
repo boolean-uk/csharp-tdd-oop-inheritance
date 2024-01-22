@@ -9,10 +9,13 @@ namespace tdd_oop_inheritance.CSharp.Main
     public abstract class LoanablePrintMedia:PrintMedia
     {
         private bool isOnLoan;
+        private Author author;
+
 
         public LoanablePrintMedia(string title) : base(title)
         {
             isOnLoan = false;
+            author = new Author();
         }
 
         public string CheckIn()
@@ -39,6 +42,7 @@ namespace tdd_oop_inheritance.CSharp.Main
             return "item has been checked out";
         }
 
-        public bool IsOnLoan { get => isOnLoan; set => isOnLoan = value; }
+        public bool IsOnLoan { get => isOnLoan;}
+        public Author Author { get => author; set => author = value; }
     }
 }
