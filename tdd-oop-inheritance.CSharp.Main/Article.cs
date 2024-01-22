@@ -4,22 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using tdd_oop_inheritance.CSharp.Main.Interfaces;
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public class Article {
-        public string title;
+    public class Article : Text, IAuthorable {
 
-        bool onLoan = false;
+        private IAuthor _author;
+        public bool authorExists;
 
-        public Article(string title) {
-            this.title = title;
+        public Article(string title, IAuthor author) : base(title)
+        {
+            onLoan = false;
+            _author = author;
+            if (author != null)
+            {
+                authorExists = true;
+            }
         }
-        
-        public bool isOnLoan()  {
+        public IAuthor Author { get { return _author; } set { _author = value; } }
+
+        public override bool isOnLoan()  {
             return onLoan;
         }
 
-        public string checkIn() {
+        public override string checkIn() {
             if (!this.isOnLoan()) {
                 return "item is not currently on loan";
             }
@@ -29,7 +37,7 @@ namespace tdd_oop_inheritance.CSharp.Main
             return "item has been checked in";
         }
 
-        public string checkOut() {
+        public override string checkOut() {
             if (this.isOnLoan()) {
                 return "item is currently on loan";
             }
