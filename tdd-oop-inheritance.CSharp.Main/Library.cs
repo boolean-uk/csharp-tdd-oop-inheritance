@@ -3,51 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using tdd_oop_inheritance.CSharp.Main.Parentclass;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
     public class Library {
-        List<Article> articles = new List<Article>();
-        List<Book> books = new List<Book>();
-        List<Newspaper> newspapers = new List<Newspaper>();
+        List<Literature> _literature = new List<Literature>();
 
-        public void addToStock(Article item) {
-            this.articles.Add(item);
+        public List<Literature> literature { get => _literature; set => _literature = value; } 
+
+        public void addToStock(Literature item) {
+            this.literature.Add(item);
         }
 
-        public void addToStock(Book item) {
-            this.books.Add(item);
-        }
-
-        public void addToStock(Newspaper item) {
-            this.newspapers.Add(item);
-        }
 
         // The following methods may contain code that you are unfamiliar with. The strange syntax of article -> something
         // is called a lambda expression (https://www.w3schools.com/java/java_lambda.asp)
-        public string checkInArticle(string title) {
+        public string checkInLiterature(string title) {
 
-            List<Article> filtered = (List<Article>)this.articles.Where(article => article.title.Equals(title));
-
-            if (filtered.Count() < 1) {
-                return "item is not part of the library's collection";
-            }
-
-            return filtered[0].checkIn();
-        }
-
-        public string checkOutArticle(string title) {
-            List<Article> filtered = (List<Article>)this.articles.Where(article => article.title.Equals(title));
-
-            if (filtered.Count() < 1) {
-                return "item is not part of the library's collection";
-            }
-
-            return filtered[0].checkOut();
-        }
-
-        public string checkInBook(string title) {
-            List<Book> filtered = (List<Book>)this.books.Where(book => book.Equals(title));
+            List<Literature> filtered = (List<Literature>)this.literature.Where(literature => literature.title.Equals(title)).ToList();
 
             if (filtered.Count() < 1) {
                 return "item is not part of the library's collection";
@@ -56,28 +30,8 @@ namespace tdd_oop_inheritance.CSharp.Main
             return filtered[0].checkIn();
         }
 
-        public string checkOutBook(string title) {
-            List<Book> filtered = (List<Book>)this.books.Where(book => book.Equals(title));
-
-            if (filtered.Count() < 1) {
-                return "item is not part of the library's collection";
-            }
-
-            return filtered[0].checkOut();
-        }
-
-        public string checkInNewspaper(string title) {
-            List<Newspaper> filtered = (List<Newspaper>)this.newspapers.Where(newspaper => newspaper.title.Equals(title));
-
-            if (filtered.Count() < 1) {
-                return "item is not part of the library's collection";
-            }
-
-            return filtered[0].checkIn();
-        }
-
-        public string checkOutNewspaper(string title) {
-            List<Newspaper> filtered = (List<Newspaper>)this.newspapers.Where(newspaper => newspaper.title.Equals(title));
+        public string checkOutLiterature(string title) {
+            List<Literature> filtered = (List<Literature>)this.literature.Where(literature => literature.title.Equals(title)).ToList();
 
             if (filtered.Count() < 1) {
                 return "item is not part of the library's collection";

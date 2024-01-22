@@ -37,5 +37,16 @@ namespace tdd_oop_inheritance.CSharp.Test
 
             Assert.AreEqual("item is not currently on loan", book.checkIn());
         }
+
+        [Test]
+        public void GetAuthorName_Book()
+        {
+            Author author = new Author("Herman Melville", "Woodlawn Cemetery", "www.melville.org");
+            Book book = new Book("Moby Dick", author);
+
+            string expectedResult = book.getAuthorName();
+            string actualResult = "Herman Melville";
+            Assert.That(expectedResult, Is.EqualTo(actualResult));
+        }
     }
 }
