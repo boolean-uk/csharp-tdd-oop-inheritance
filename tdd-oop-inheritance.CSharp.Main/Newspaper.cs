@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public class Newspaper
+    public class Newspaper : Item
     {
-        public string title;
 
-        Boolean onLoan = false;
-
-        public Newspaper(string title) {
-            this.title = title;
+        public Newspaper(string title) : base(title) {
+            this.Title = title;
         }
 
         public bool isOnLoan() {
