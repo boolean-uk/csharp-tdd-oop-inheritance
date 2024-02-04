@@ -1,22 +1,27 @@
-﻿using tdd_oop_inheritance.CSharp.Main;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using Items;
 
 namespace tdd_oop_inheritance.CSharp.Test
 {
     public class NewspaperTest
     {
-        [Test]
-        public void shouldBeUnavailableForCheckIn()
+        private Newspaper newspaper;
+        [SetUp]
+        public void SetUp() 
         {
-            Newspaper newspaper = new Newspaper("The Daily Java");
-            Assert.AreEqual("newspapers are not available for loan", newspaper.checkIn());
+            newspaper = new Newspaper("The Daily Java");
+
+        }
+        [Test]
+        public void ShouldBeUnavailableForCheckIn()
+        {
+            Assert.That(newspaper.CheckIn(), Is.EqualTo("Newspapers are not available for loan"));
         }
 
         [Test]
-        public void shouldBeUnavailableForCheckOut()
+        public void ShouldBeUnavailableForCheckOut()
         {
-            Newspaper newspaper = new Newspaper("The Daily Java");
-            Assert.AreEqual("newspapers are not available for loan", newspaper.checkOut());
+            Assert.That(newspaper.CheckOut(), Is.EqualTo("Newspapers are not available for loan"));
         }
     }
 }
