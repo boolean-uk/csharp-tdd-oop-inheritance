@@ -7,7 +7,12 @@ using System.Threading.Tasks;
 namespace tdd_oop_inheritance.CSharp.Main
 {
     public class Article: LibraryItem {
-       
-        public Article(string title) : base(title) {}
+
+        public Author author;
+
+        public Article(Author author, string title) : base(title) 
+        {
+            this.author = author;
+        }
     }
 }
