@@ -3,39 +3,45 @@ using NUnit.Framework;
 
 namespace tdd_oop_inheritance.CSharp.Test
 {
+    [TestFixture]
     class ArticleTest
     {
         [Test]
-        public void shouldCheckOutIfAvailable()
-            {
-                Article article = new Article("JUnit Rocks");
-                Assert.AreEqual("item has been checked out", article.checkOut());
-            }
+        public void ShouldCheckOutIfAvailable()
+        {
+            Author author = new Author("John Doe", "john@example.com", "www.example.com");
+            Article article = new Article("JUnit Rocks", author);
+
+            Assert.AreEqual("Item has been checked out!", article.CheckOut());
+        }
 
         [Test]
-        public void shouldDeclineIfNotAvailableToCheckout()
-            {
-                Article article = new Article("JUnit Rocks");
-                article.checkOut();
+        public void ShouldDeclineIfNotAvailableToCheckout()
+        {
+            Author author = new Author("John Doe", "john@example.com", "www.example.com");
+            Article article = new Article("JUnit Rocks", author);
+            article.CheckOut();
 
-                Assert.AreEqual("item is currently on loan", article.checkOut());
-            }
-
-        [Test]
-        public void shouldCheckInIfOnLoan()
-            {
-                Article article = new Article("JUnit Rocks");
-                article.checkOut();
-
-                Assert.AreEqual("item has been checked in", article.checkIn());
-            }
+            Assert.AreEqual("Item is currently on loan!", article.CheckOut());
+        }
 
         [Test]
-        public void shouldDeclineCheckInIfNotOnLoan()
-            {
-                Article article = new Article("JUnit Rocks");
+        public void ShouldCheckInIfOnLoan()
+        {
+            Author author = new Author("John Doe", "john@example.com", "www.example.com");
+            Article article = new Article("JUnit Rocks", author);
+            article.CheckOut();
 
-                Assert.AreEqual("item is not currently on loan", article.checkIn());
-            }
+            Assert.AreEqual("Item has been checked in!", article.CheckIn());
+        }
+
+        [Test]
+        public void ShouldDeclineCheckInIfNotOnLoan()
+        {
+            Author author = new Author("John Doe", "john@example.com", "www.example.com");
+            Article article = new Article("JUnit Rocks", author);
+
+            Assert.AreEqual("Item is not currently on loan!", article.CheckIn());
+        }
     }
 }

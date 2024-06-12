@@ -1,31 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public class Newspaper
+    public class Newspaper : LibraryItem
     {
-        public string title;
+        public Newspaper(string title) : base(title) { }
 
-        Boolean onLoan = false;
-
-        public Newspaper(string title) {
-            this.title = title;
+        public override string CheckIn()
+        {
+            return "Newspapers are not available for loan!";
         }
 
-        public bool isOnLoan() {
-            return onLoan;
-        }
-
-        public string checkIn() {
-            return "newspapers are not available for loan";
-        }
-
-        public string checkOut() {
-            return "newspapers are not available for loan";
+        public override string CheckOut()
+        {
+            return "Newspapers are not available for loan!";
         }
     }
 }
