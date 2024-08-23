@@ -85,5 +85,16 @@ namespace tdd_oop_inheritance.CSharp.Main
 
             return filtered[0].checkOut();
         }
+
+        public List<Article> allArticlesByAuthor(string name)
+        {
+            if (this.articles.Count == 0)
+            {
+                Console.WriteLine("No Articles in library");
+                return new List<Article>();
+            }
+      
+            return this.articles.Where(a => a._author.Name == name).ToList();
+        }
     }
 }

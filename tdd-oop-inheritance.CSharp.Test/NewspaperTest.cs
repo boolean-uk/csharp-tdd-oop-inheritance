@@ -16,6 +16,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         public void shouldBeUnavailableForCheckOut()
         {
             Newspaper newspaper = new Newspaper("The Daily Java");
+            newspaper.checkOut();
             Assert.AreEqual("newspapers are not available for loan", newspaper.checkOut());
         }
     }
