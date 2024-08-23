@@ -5,6 +5,8 @@ namespace tdd_oop_inheritance.CSharp.Test
 {
     class ArticleTest
     {
+
+        
         [Test]
         public void shouldCheckOutIfAvailable()
             {
@@ -41,5 +43,17 @@ namespace tdd_oop_inheritance.CSharp.Test
 
             Assert.AreEqual("item is not currently on loan", article.checkIn());
             }
+
+        [Test]
+        public void AllArticlesAvailableByAuthorTest()
+        {
+            Author author = new Author() { Name = "Jerry", ContactInformation = "+4799338822", Website = "ArticleMan.com" };
+            Article article1 = new Article("JUnit Rocks", author);
+            Article article2 = new Article("Test Rocks", author);
+            Article article3 = new Article("Test", author);
+            Article article4 = new Article("Test Rocks", author);
+            Article article5 = new Article("Test Rocks", author);
+
+        }
     }
 }
