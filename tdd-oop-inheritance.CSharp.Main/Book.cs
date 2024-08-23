@@ -8,8 +8,13 @@ namespace tdd_oop_inheritance.CSharp.Main
 {
     public class Book : ReadingMaterial {
 
-        public Book(string title) : base(title) {}
+        public Author WrittenBy { get; }
 
-       
+        public Book(string title, Author author) : base(title)
+        {
+            WrittenBy = author;
+        }
+
+
     }
 }
