@@ -8,11 +8,11 @@ namespace tdd_oop_inheritance.CSharp.Main
 {
     public class Article : LibItem
     {
-        private Author _author;
-        public Article(string title, Author author) {
+        public Author _author;
+        public Article(string title, Author author)
+        {
             this.title = title;
             this._author = author;
         }
-        
     }
 }
