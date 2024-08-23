@@ -5,17 +5,18 @@ namespace tdd_oop_inheritance.CSharp.Test
 {
     public class BookTest
     {
+        Author author = new Author("Steven Guy", "+4712345678", "http://thisisawebsite.com");
         [Test]
         public void shouldCheckOutIfAvailable()
         {
-            Book book = new Book("JUnit Rocks");
+            Literature book = new Book(author, "JUnit Rocks");
             Assert.AreEqual("item has been checked out", book.checkOut());
         }
 
         [Test]
         public void shouldDeclineIfNotAvailableToCheckout()
         {
-            Book book = new Book("JUnit Rocks");
+            Literature book = new Book(author, "JUnit Rocks");
             book.checkOut();
 
             Assert.AreEqual("item is currently on loan", book.checkOut());
@@ -24,7 +25,7 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldCheckInIfOnLoan()
         {
-            Book book = new Book("JUnit Rocks");
+            Literature book = new Book(author, "JUnit Rocks");
             book.checkOut();
 
             Assert.AreEqual("item has been checked in", book.checkIn());
@@ -33,9 +34,18 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void shouldDeclineCheckInIfNotOnLoan()
         {
-            Book book = new Book("JUnit Rocks");
+            Literature book = new Book(author, "JUnit Rocks");
 
             Assert.AreEqual("item is not currently on loan", book.checkIn());
+        }
+
+        [Test]
+        public void shouldReturnNameOfAuthor()
+        {
+            Literature book = new Book(author, "JUnit Rocks");
+            string nameOfAuthor = "";
+            if (book is Book b) nameOfAuthor = b.Author.Name;
+            Assert.AreEqual("Steven Guy", nameOfAuthor);
         }
     }
 }
