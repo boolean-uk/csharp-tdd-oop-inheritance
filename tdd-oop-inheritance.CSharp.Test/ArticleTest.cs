@@ -5,37 +5,45 @@ namespace tdd_oop_inheritance.CSharp.Test
 {
     class ArticleTest
     {
+        Author author;
+
+        [SetUp]
+        public void SetUp()
+        {
+            this.author = new Author("Bob Bagel", "+4712345678", "http://bobsemail.com");
+        }
+
         [Test]
         public void shouldCheckOutIfAvailable()
-            {
-                Article article = new Article("JUnit Rocks");
-                Assert.AreEqual("item has been checked out", article.checkOut());
-            }
+        {
+            LibraryItem article = new Article(author, "JUnit Rocks");
+            Assert.AreEqual("item has been checked out", article.checkOut());
+        }
 
         [Test]
         public void shouldDeclineIfNotAvailableToCheckout()
-            {
-                Article article = new Article("JUnit Rocks");
-                article.checkOut();
+        {
+            LibraryItem article = new Article(author, "JUnit Rocks");
+            article.checkOut();
 
-                Assert.AreEqual("item is currently on loan", article.checkOut());
-            }
+            Assert.AreEqual("item is currently on loan", article.checkOut());
+        }
 
         [Test]
         public void shouldCheckInIfOnLoan()
-            {
-                Article article = new Article("JUnit Rocks");
-                article.checkOut();
+        {
+            LibraryItem article = new Article(author, "JUnit Rocks");
+            article.checkOut();
 
-                Assert.AreEqual("item has been checked in", article.checkIn());
-            }
+            Assert.AreEqual("item has been checked in", article.checkIn());
+        }
 
         [Test]
         public void shouldDeclineCheckInIfNotOnLoan()
-            {
-                Article article = new Article("JUnit Rocks");
+        {
+            LibraryItem article = new Article(author, "JUnit Rocks");
 
-                Assert.AreEqual("item is not currently on loan", article.checkIn());
-            }
-    }
+            Assert.AreEqual("item is not currently on loan", article.checkIn());
+        }
+}
 }
