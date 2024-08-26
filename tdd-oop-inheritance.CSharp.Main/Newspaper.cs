@@ -8,9 +8,14 @@ namespace tdd_oop_inheritance.CSharp.Main
 {
     public class Newspaper : Item
     {
-        public Newspaper(string title) :base (title){
-            this.title = title;
+        public Newspaper(string title) : base(title)
+        {
+
         }
+
+        //public Newspaper(string title) :base (title){
+        //    this.title = title;
+        //}
 
         public override string checkIn()
         {

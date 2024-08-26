@@ -10,7 +10,8 @@ namespace tdd_oop_inheritance.CSharp.Test
         public void ShouldBookAddToStock()
         {
             Library library = new Library();
-            Book book = new Book("C# is the thing");
+            Author author = new Author("John Doe", "Website", "@here");
+            Book book = new Book(author, "C# fun");
 
             library.addToStock(book);
             bool expected = true;
@@ -22,7 +23,7 @@ namespace tdd_oop_inheritance.CSharp.Test
                 result = true;
             }
 
-            Assert.IsTrue(result == expected);
+            Assert.AreEqual(expected, result);
             
         }
 
@@ -30,7 +31,8 @@ namespace tdd_oop_inheritance.CSharp.Test
         public void ShouldAddArticleToStock()
         {
             Library library = new Library();
-            Article article = new Article("This article is a non issue");
+            Author author = new Author("Jane Doe", "Website", "@here");
+            Article article = new Article(author, "This article is a non issue");
 
             library.addToStock(article);
             bool expected = true;
@@ -63,6 +65,38 @@ namespace tdd_oop_inheritance.CSharp.Test
             }
 
             Assert.IsTrue(result == expected);
+
+        }
+
+        [Test]
+        public void ShouldPrintArticleAuthor()
+        {
+            Library library = new Library();
+            Author author = new Author("John Doe", "Website", "@here");
+            Article article = new Article(author, "Hot take - Python is older than Java");
+
+            library.addToStock(article);
+            string expected = "John Doe";
+
+            string result = library.AuthorInfo("Hot take - Python is older than Java");
+
+            Assert.AreEqual(expected, result);
+
+        }
+
+        [Test]
+        public void ShouldPrintBookAuthor()
+        {
+            Library library = new Library();
+            Author author = new Author("John Doe", "Website", "@here");
+            Book book = new Book(author, "C# fun");
+
+            library.addToStock(book);
+            string expected = "John Doe";
+
+            string result = library.AuthorInfo("C# fun");
+
+            Assert.AreEqual(expected, result);
 
         }
     }

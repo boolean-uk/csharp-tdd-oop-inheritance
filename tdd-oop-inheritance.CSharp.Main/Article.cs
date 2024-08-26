@@ -8,8 +8,10 @@ namespace tdd_oop_inheritance.CSharp.Main
 {
     public class Article : Item {
 
-        public Article(string title) : base(title) {
-            this.title = title;
+        public Author author { get; set; }
+
+        public Article(Author author, string title) : base(title) {
+            this.author = author;
         }
     }
 }
