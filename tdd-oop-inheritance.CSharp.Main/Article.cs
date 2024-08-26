@@ -10,10 +10,13 @@ namespace tdd_oop_inheritance.CSharp.Main
         public string title;
 
         bool onLoan = false;
+        Author author;
 
-        public Article(string title) : base(title)
+        public Article(Author author,string title) : base(title)
         {
+            this.author = author;
+
         }
-      
+
     }
 }

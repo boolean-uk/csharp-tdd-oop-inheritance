@@ -28,7 +28,7 @@ namespace tdd_oop_inheritance.CSharp.Main
             return filtered[0].checkIn();
         }
 
-        public string checkOutA(string title) {
+        public string checkOut(string title) {
             List<LibraryItem> filtered = (List<LibraryItem>)this.articles.Where(article => article.title.Equals(title));
 
             if (filtered.Count() < 1) {
