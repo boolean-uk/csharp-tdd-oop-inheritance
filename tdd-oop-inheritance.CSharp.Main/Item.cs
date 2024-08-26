@@ -6,41 +6,41 @@ using System.Threading.Tasks;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public abstract class Paper
+    public abstract class Item
     {
-        protected string _title;
-        protected bool _onLoan = false;
+        public string title;
+        public bool onLoan = false;
 
-        protected Paper(string title)
+        public Item(string title)
         {
-            _title = title;
+            this.title = title;
         }
 
         public bool isOnLoan()
         {
-            return _onLoan;
+            return this.onLoan;
         }
 
-        public string checkIn()
+        public virtual string checkIn()
         {
             if (!this.isOnLoan())
             {
-                return "Item is not currently on loan";
+                return "item is not currently on loan";
             }
 
-            _onLoan = false;
+            this.onLoan = false;
 
             return "item has been checked in";
         }
 
-        public string checkOut()
+        public virtual string checkOut()
         {
             if (this.isOnLoan())
             {
-                return "Item is currently on loan";
+                return "item is currently on loan";
             }
 
-            _onLoan = true;
+            this.onLoan = true;
 
             return "item has been checked out";
         }

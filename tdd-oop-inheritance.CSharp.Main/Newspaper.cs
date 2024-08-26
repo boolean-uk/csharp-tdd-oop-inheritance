@@ -6,12 +6,21 @@ using System.Threading.Tasks;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public class Newspaper : Paper
+    public class Newspaper : Item
     {
-        public string title;
+        public Newspaper(string title) : base(title) 
+        { 
+            this.title = title; 
+        }
 
-        bool onLoan = false;
+        public override string checkIn()
+        {
+            return "newspapers are not available for loan";
+        }
 
-        public Newspaper(string title) : base(title) {}
+        public override string checkOut()
+        {
+            return "newspapers are not available for loan";
+        }
     }
 }

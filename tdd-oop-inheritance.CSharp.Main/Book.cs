@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public class Book : Paper 
+    public class Book : Item 
     {
-        public string title;
-
-        bool onLoan = false;
-
-        public Book(string title) : base(title) {}
+        public Book(string title) : base(title) 
+        {
+            this.title = title;
+        }
     }
 }
