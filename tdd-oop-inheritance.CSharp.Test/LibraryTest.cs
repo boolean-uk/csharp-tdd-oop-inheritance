@@ -18,8 +18,9 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void ShouldCheckInItem()
         {
+            Author author = new Author("Henrik Ibsen", "He is dead", "HeIsDead.com");
             Library library = new Library();
-            Item book = new Book("The qualities of seeing sharp");
+            Item book = new Book("The qualities of seeing sharp", author);
             library.addToStock(book);
             library.checkOutItem("The qualities of seeing sharp");
 
@@ -29,8 +30,9 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void checkinShouldDeclineIfNotPartOfLibaryCollection()
         {
+            Author author = new Author("Henrik Ibsen", "He is dead", "HeIsDead.com");
             Library library = new Library();
-            Item book = new Book("The qualities of seeing sharp");
+            Item book = new Book("The qualities of seeing sharp", author);
             library.checkOutItem("The qualities of seeing sharp");
 
             Assert.AreEqual("item is not part of the library's collection", library.checkInItem("The qualities of seeing sharp"));
@@ -39,8 +41,9 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void ShouldCheckOutItem()
         {
+            Author author = new Author("Henrik Ibsen", "He is dead", "HeIsDead.com");
             Library library = new Library();
-            Item article = new Article("See sharp is better than java coffee");
+            Item article = new Article("See sharp is better than java coffee", author);
             library.addToStock(article);
 
             Assert.AreEqual("item has been checked out", library.checkOutItem("See sharp is better than java coffee"));
@@ -49,8 +52,9 @@ namespace tdd_oop_inheritance.CSharp.Test
         [Test]
         public void checkoutShouldDeclineIfNotPartOfLibaryCollection()
         {
+            Author author = new Author("Henrik Ibsen", "He is dead", "HeIsDead.com");
             Library library = new Library();
-            Item book = new Book("The qualities of seeing sharp");
+            Item book = new Book("The qualities of seeing sharp", author);
             library.checkInItem("The qualities of seeing sharp");
 
             Assert.AreEqual("item is not part of the library's collection", library.checkInItem("The qualities of seeing sharp"));
