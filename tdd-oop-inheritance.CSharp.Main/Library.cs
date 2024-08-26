@@ -20,7 +20,7 @@ namespace tdd_oop_inheritance.CSharp.Main
         public string checkInItem(string title)
         {
 
-            List<Item> filtered = (List<Item>)this.items.Where(item => item.title.Equals(title));
+            List<Item> filtered = (List<Item>)this.items.Where(item => item.Title.Equals(title));
 
             if (filtered.Count() < 1)
             {
@@ -32,7 +32,7 @@ namespace tdd_oop_inheritance.CSharp.Main
 
         public string checkOutItem(string title)
         {
-            List<Item> filtered = (List<Item>)this.items.Where(item => item.title.Equals(title));
+            List<Item> filtered = (List<Item>)this.items.Where(item => item.Title.Equals(title));
 
             if (filtered.Count() < 1)
             {
@@ -45,7 +45,7 @@ namespace tdd_oop_inheritance.CSharp.Main
         public virtual string AuthorInfo(string title)
         {
             List<Item> filtered = (List<Item>)this.items
-                .Where(item => item.title.Equals(title)).ToList();
+                .Where(item => item.Title.Equals(title)).ToList();
             if (filtered.Count() < 1)
             {
                 return "Item is not part of lib collection";

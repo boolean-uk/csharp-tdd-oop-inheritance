@@ -9,12 +9,15 @@ namespace tdd_oop_inheritance.CSharp.Main
 {
     public class Item
     {
-        public string title;
+        private string _title;
+
+        public string Title { get => _title; set => _title = value; }
+
         bool onLoan = false;
 
         public Item(string title)
         {
-            this.title = title;
+            _title = title;
         }
 
         public bool isOnLoan()
