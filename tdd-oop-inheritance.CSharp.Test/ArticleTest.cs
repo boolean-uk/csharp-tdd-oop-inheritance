@@ -1,41 +1,61 @@
-﻿using tdd_oop_inheritance.CSharp.Main;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using tdd.oop.inheritance.CSharp.Main.LibraryItems;
+using Interface.oop.inheritance.CSharp.Main;
+using tdd.oop.inheritance.CSharp.Main;
 
-namespace tdd_oop_inheritance.CSharp.Test
+namespace tdd.oop.inheritance.CSharp.Test
 {
     class ArticleTest
     {
         [Test]
-        public void shouldCheckOutIfAvailable()
-            {
-                Article article = new Article("JUnit Rocks");
-                Assert.AreEqual("item has been checked out", article.checkOut());
-            }
+        public void ShouldCheckOutIfAvailable()
+        {
+            IAuthor author = new Author();
+            Article article = new Article("All About Muggles", author);
+            Assert.AreEqual("item has been checked out", article.CheckOut());
+        }
 
         [Test]
-        public void shouldDeclineIfNotAvailableToCheckout()
-            {
-                Article article = new Article("JUnit Rocks");
-                article.checkOut();
+        public void ShouldDeclineIfNotAvailableToCheckout()
+        {
+            IAuthor author = new Author();
+            Article article = new Article("All About Muggles", author);
+            article.CheckOut();
 
-                Assert.AreEqual("item is currently on loan", article.checkOut());
-            }
-
-        [Test]
-        public void shouldCheckInIfOnLoan()
-            {
-                Article article = new Article("JUnit Rocks");
-                article.checkOut();
-
-                Assert.AreEqual("item has been checked in", article.checkIn());
-            }
+            Assert.AreEqual("item is currently on loan", article.CheckOut());
+        }
 
         [Test]
-        public void shouldDeclineCheckInIfNotOnLoan()
-            {
-                Article article = new Article("JUnit Rocks");
+        public void ShouldCheckInIfOnLoan()
+        {
+            IAuthor author = new Author();
+            Article article = new Article("All About Muggles", author);
+            article.CheckOut();
 
-                Assert.AreEqual("item is not currently on loan", article.checkIn());
-            }
+            Assert.AreEqual("item has been checked in", article.CheckIn());
+        }
+
+        [Test]
+        public void ShouldDeclineCheckInIfNotOnLoan()
+        {
+            IAuthor author = new Author();
+            Article article = new Article("All About Muggles", author);
+
+            Assert.AreEqual("item is not currently on loan", article.CheckIn());
+        }
+        [Test]
+        public void ShouldHaveAuthor()
+        {
+            IAuthor author = new Author();
+
+            author.Name = "J.K.R.";
+            author.website = "wizardingworld.com";
+            author.ContactInformation = "call assistant";
+
+            Article article = new Article("All About Muggles", author);
+
+
+            Assert.IsTrue(article.Author.website == "wizardingworld.com");
+        }
     }
 }

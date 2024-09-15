@@ -1,22 +1,25 @@
-﻿using tdd_oop_inheritance.CSharp.Main;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
-namespace tdd_oop_inheritance.CSharp.Test
+using tdd.oop.inheritance.CSharp.Main.LibraryItems;
+using tdd.oop.inheritance.CSharp.Main;
+
+
+namespace tdd.oop.inheritance.CSharp.Test
 {
     public class NewspaperTest
     {
         [Test]
-        public void shouldBeUnavailableForCheckIn()
+        public void ShouldBeUnavailableForCheckIn()
         {
-            Newspaper newspaper = new Newspaper("The Daily Java");
-            Assert.AreEqual("newspapers are not available for loan", newspaper.checkIn());
+            Newspaper newspaper = new("The Daily Java");
+            Assert.AreEqual("newspapers are not available for loan", newspaper.CheckIn());
         }
 
         [Test]
-        public void shouldBeUnavailableForCheckOut()
+        public void ShouldBeUnavailableForCheckOut()
         {
-            Newspaper newspaper = new Newspaper("The Daily Java");
-            Assert.AreEqual("newspapers are not available for loan", newspaper.checkOut());
+            Newspaper newspaper = new("The Daily Java");
+            Assert.AreEqual("newspapers are not available for loan", newspaper.CheckOut());
         }
     }
 }
