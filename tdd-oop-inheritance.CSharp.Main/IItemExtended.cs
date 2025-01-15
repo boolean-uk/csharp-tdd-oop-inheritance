@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public class Book : LibraryItem, IItemExtended
+    public interface IItemExtended
     {
-        public Book(string title) : base(title) { }
-
-        public Author Author { get;  set; }
+        public Author Author { get; set; }
     }
 }
